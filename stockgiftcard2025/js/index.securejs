@@ -1,0 +1,103 @@
+// scrollAnim //
+function scrollAnim() {
+	var pageTop = $(document).scrollTop();
+	var pageBottom = pageTop + $(window).height();
+	var tags = $(".js-animate");
+	var activeOffset = 30;
+
+	tags.each(function (index) {
+		if ($(this).offset().top < pageBottom - activeOffset) {
+			$(this).addClass("js-animate--active");
+		} else {
+			$(this).removeClass("js-animate--active");
+		}
+	});
+}
+scrollAnim(); // init
+$(document).on("scroll", scrollAnim);
+
+//-loading
+$(window).on("load", function () {
+  $.Window = $(window);
+  $.Body = $('body');
+  $('body').css('visibility', 'visible');
+  $(".loader").delay(500).fadeOut("slow");
+  $("#overlayer").delay(500).fadeOut("slow");
+})
+
+//-toggle
+$("#cash").on("click", function () {
+  $(this).toggleClass("active");
+  $("#cashdesc").slideToggle();
+});
+$("#certificate").on("click", function () {
+  $(this).toggleClass("active");
+  $("#certificatedesc").slideToggle();
+});
+$("#product").on("click", function () {
+  $(this).toggleClass("active");
+  $("#productdesc").slideToggle();
+});
+
+//-錨點
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href').substring(1);
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      const headerOffset = 130;
+      const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - headerOffset,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+// header anchor link toggle menu
+$("#header a.header-sec-link").on("click", function () {
+  $("#header-toggle").removeClass("toggled");
+  $("#header nav").removeClass("toggled");
+});
+
+// header menu setting
+$("#header-toggle").on("click", function () {
+  $(this).toggleClass("toggled");
+  $("nav").toggleClass("toggled");
+});
+
+//-pop
+$(".dawho-app-link").on("click", function (e) {
+  // console.log(123);
+  $("#qrcode-popup").fadeIn();
+});
+$(".close").on("click", function () {
+  $("#qrcode-popup").fadeOut();
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  let tl = gsap.timeline({ delay: 0.5 });
+
+  tl.from("#title3", {
+    opacity: 0,
+    y: -30,
+    duration: 0.8,
+    ease: "power3.out",
+  })
+  .from("#title4", {
+    opacity: 0,
+    y: -30,
+    duration: 0.8,
+    ease: "power3.out",
+  }, "-=0.6")
+
+  .from("#title5", {
+    scale: 0.85,
+    opacity: 0,
+    duration: 0.8,
+    ease: "bounce.out",
+  }, "-=0.6")
+});

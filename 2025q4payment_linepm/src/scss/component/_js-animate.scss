@@ -1,0 +1,144 @@
+$f-offset: 50px;
+$f-time: 1000ms;
+.js-animate {
+    animation-duration: $f-time;
+    animation-fill-mode: forwards;
+    &--fadein {
+        opacity: 0;
+    }
+    &--fadein-up {
+        opacity: 0;
+        transform: translate(0, ( $f-offset * -1));
+    }
+    &--fadein-down {
+        opacity: 0;
+        transform: translate(0, $f-offset);
+        &-max {
+          @media (min-width: ((768 + 1) * 1px)) {
+            opacity: 0;
+            transform: translate(0, $f-offset);
+          }
+        }
+        &-min {
+          @media (max-width: (768 * 1px)) {
+            opacity: 0;
+            transform: translate(0, $f-offset);
+          }
+        }
+    }
+    &--fadein-left {
+        opacity: 0;
+        transform: translate(($f-offset * -1), 0);
+    }
+    &--fadein-right {
+        opacity: 0;
+        transform: translate($f-offset, 0);
+    }
+    &--maskin-left {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+        // clip-path: circle(0.5% at 0 0);
+        // mask-image: -webkit-gradient(linear, left top, right bottom,
+        //     color-stop(0.00,  rgba(0,0,0,1)),
+        //     color-stop(0.35,  rgba(0,0,0,1)),
+        //     color-stop(0.50,  rgba(0,0,0,0)),
+        //     color-stop(0.65,  rgba(0,0,0,0)),
+        //     color-stop(1.00,  rgba(0,0,0,0)));
+    }
+    &--maskin-right {
+        clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+    }
+    &--maskin-up {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+    &--maskin-down {
+        clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+    }
+    &--darkin {
+        filter: brightness(65%);
+    }
+    &--smallin {
+        transform: scale(0.9);
+    }
+    &--active {
+        opacity: unset;
+        transform: unset;
+        @include ie-only {
+            opacity: 1;
+            transform: none;
+        }
+        @supports not (transform: unset) {
+            opacity: 1;
+            transform: none;
+        }
+		transition: all $f-time;
+		&[class*="--maskin"] {
+			clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+        // &[class*="--maskin-left"] {
+        //     // clip-path: circle(141.4% at 0 0);
+        //     // mask-image: -webkit-gradient(linear, left top, right bottom,
+        //     // color-stop(0.00,  rgba(0,0,0,1)),
+        //     // color-stop(0.35,  rgba(0,0,0,1)),
+        //     // color-stop(0.50,  rgba(0,0,0,1)),
+        //     // color-stop(0.65,  rgba(0,0,0,1)),
+        //     // color-stop(1.00,  rgba(0,0,0,1)));
+        //     // animation: maskin $f-time linear;
+        //     // will-change: mask-image;
+        // }
+        &[class*="--darkin"] {
+            filter: brightness(1);
+        };
+        &.js-animate--path {
+            stroke-dashoffset: 0px!important;
+        }
+    }
+    @for $i from 1 through 10 {
+        $j: $i *100;
+        &--delay#{$j} {
+            transition-delay: #{$j}ms;
+        }
+    }
+
+    // @keyframes maskin {
+    //     0% {
+    //         mask-image: -webkit-gradient(linear, left top, right bottom,
+    //         color-stop(0.00,  rgba(0,0,0,0)),
+    //         color-stop(0.35,  rgba(0,0,0,0)),
+    //         color-stop(0.50,  rgba(0,0,0,0)),
+    //         color-stop(0.65,  rgba(0,0,0,0)),
+    //         color-stop(1.00,  rgba(0,0,0,0)));
+    //     }
+    //     35% {
+    //         mask-image: -webkit-gradient(linear, left top, right bottom,
+    //         color-stop(0.00,  rgba(0,0,0,1)),
+    //         color-stop(0.35,  rgba(0,0,0,1)),
+    //         color-stop(0.50,  rgba(0,0,0,0)),
+    //         color-stop(0.65,  rgba(0,0,0,0)),
+    //         color-stop(1.00,  rgba(0,0,0,0)));
+    //     }
+    //     50% {
+    //         mask-image: -webkit-gradient(linear, left top, right bottom,
+    //         color-stop(0.00,  rgba(0,0,0,1)),
+    //         color-stop(0.35,  rgba(0,0,0,1)),
+    //         color-stop(0.50,  rgba(0,0,0,1)),
+    //         color-stop(0.65,  rgba(0,0,0,0)),
+    //         color-stop(1.00,  rgba(0,0,0,0)));
+    //     }
+    //     65% {
+    //         mask-image: -webkit-gradient(linear, left top, right bottom,
+    //         color-stop(0.00,  rgba(0,0,0,1)),
+    //         color-stop(0.35,  rgba(0,0,0,1)),
+    //         color-stop(0.50,  rgba(0,0,0,1)),
+    //         color-stop(0.65,  rgba(0,0,0,1)),
+    //         color-stop(1.00,  rgba(0,0,0,0)));
+    //     }
+    //     100% {
+    //         mask-image: -webkit-gradient(linear, left top, right bottom,
+    //         color-stop(0.00,  rgba(0,0,0,1)),
+    //         color-stop(0.35,  rgba(0,0,0,1)),
+    //         color-stop(0.50,  rgba(0,0,0,1)),
+    //         color-stop(0.65,  rgba(0,0,0,1)),
+    //         color-stop(1.00,  rgba(0,0,0,1)));
+    //     }
+    // }
+}

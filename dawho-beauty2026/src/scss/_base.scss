@@ -1,0 +1,239 @@
+$primary: #005787;
+$textColor: #62a4bd;
+$mark: #ff8266;
+$bg1: #fcfcfa;
+$bg2: #00425c;
+$mainColor: #ceb071;
+$xxl: 2048px; // web
+$xl: 1440px; // web-s
+$lg: 1024px; // pad
+$md: 768px; // pad-s
+$sm: 640px;
+$xs: 480px; // mobile
+$xxs: 360px; // mobile-s
+$dark: #000000;
+$gray: rgba(102, 85, 85, 1);
+
+@mixin b1279 {
+  @media all and (max-width: 1279px) {
+    @content;
+  }
+}
+@mixin b1024 {
+  @media all and (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin b768 {
+  @media all and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin pad {
+  @media all and (max-width: 992px) {
+    @content;
+  }
+}
+.fz-20 {
+  font-size: 20px;
+}
+.fz-24 {
+  font-size: 24px;
+}
+.fz-30 {
+  font-size: 30px;
+}
+.fz-40 {
+  font-size: 40px !important;
+}
+.fw-500{
+  font-weight: 500;
+}
+.fw-bold {
+  font-weight: bold;
+}
+.fc-gray {
+  color: $gray !important;
+}
+.fc-black {
+  color: $dark;
+}
+.fc_white {
+  color: #fff;
+}
+.red {
+  color: #c80f23
+}
+.green {
+  color: #00C300
+}
+.center {
+  text-align: center
+}
+.t_justify {
+  text-align: justify !important;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+.super {
+  vertical-align: super;
+}
+.small {
+  font-size: 0.675em;
+}
+.highlight {
+  color: #ed1c24;
+}
+.note {
+  letter-spacing: 0.1em;
+}
+.underline {
+  text-decoration: underline;
+}
+@mixin rwd($vw: $md, $limit: max-width) {
+  @media all and (#{$limit}: $vw) {
+    @content;
+  }
+}
+
+@mixin web {
+  @media all and (min-width:1280px) {
+    @content;
+  }
+}
+@mixin b375 {
+  @media all and (max-width: 374px) {
+    @content;
+  }
+}
+
+
+body {
+  overflow-x: hidden;
+}
+
+a,
+a:hover,
+a:active,
+a:focus {
+  text-decoration: none;
+}
+
+ol {
+  &.disc {
+    padding-left: 1.1em;
+    > li {
+      list-style: disc;
+    }
+  }
+  &.decimal {
+    padding-left: 1.1em;
+    > li {
+      list-style: decimal;
+    }
+  }
+  &.square {
+    margin-left: 1em;
+    > li {
+      list-style: square;
+    }
+  }
+  &.decimal1em {
+    margin-left: 1em;
+    > li {
+      list-style: decimal;
+    }
+  }
+  &.decimal-arc {
+    counter-reset: counter;
+    >li {
+      &:before {
+        counter-increment: counter;
+        content: '('counter(counter) ')';
+      }
+    }
+  }
+  &.cjk {
+    margin-left: 2em;
+    > li {
+      list-style: cjk-ideographic;
+    }
+  }
+}
+.symbol {
+  position: relative;
+  margin-left: 1em;
+  &:before {
+    position: absolute;
+    content: "※";
+    left: 0;
+    top: 0;
+    margin-left: -1em;
+
+  }
+}
+
+
+@mixin breakpoint($name) {
+  // 預設範圍
+  $breakpoints: (
+    xxs: 320px,
+    xs: 375px,
+    sm: 768px,
+    ssm: 991px,
+    md: 1024px,
+    lg: 1200px,
+    xl: 1420px
+  ) !default;
+
+  $point: map-get($breakpoints, $name);
+
+  @if $point {
+    $max: nth($point, 1);
+    @media (max-width: $max) {
+      @content;
+    }
+  }
+}
+br {
+  &.br {
+    display: none;
+    @include breakpoint(sm) {
+      display: block;
+    }
+
+    &-xl {
+      display: none;
+      @include breakpoint(xl) {
+        display: block;
+      }
+    }
+  }
+  &.revese-br {
+    display: block;
+    @include breakpoint(sm){
+      display: none;
+    }
+  }
+}
+
+// breakpoint
+$pcrwd-breakpoint: 1279;
+$mblrwd-breakpoint: 768;
+$pcrwd-breakpoint-xl: 1420;
+@function vwxl($target) {
+  $vw-context: ($pcrwd-breakpoint-xl * 0.01) * 1px;
+  @return ($target/$vw-context) * 1vw;
+}
+@function vw($target) {
+  $vw-context: ($pcrwd-breakpoint * 0.01) * 1px;
+  @return ($target/$vw-context) * 1vw;
+}
+@function vwm($target) {
+  $vw-context: ($mblrwd-breakpoint * 0.01) * 1px;
+  @return ($target/$vw-context) * 1vw;
+}

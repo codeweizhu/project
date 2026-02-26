@@ -1,0 +1,136 @@
+/** label bling */
+@keyframes shine-move {
+  0% {
+    right: 110%;
+  }
+  40%,
+  100% {
+    right: -50%;
+  }
+}
+
+
+
+// 漂浮
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, 20px); // 往下漂浮 20px
+  }
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+
+// =========
+// 跑馬燈動畫
+@keyframes bg-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); // 移動一半（剛好換到第二張）
+  }
+}
+
+// card
+@keyframes fadeZoomOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);  // 正常大小
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5);  // 縮小
+  }
+}
+@keyframes fadeZoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);  // 正常大小
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);  // 縮小
+  }
+}
+
+// 各裝飾的旋轉彈出效果
+@keyframes rotatePop {
+  0% {
+    opacity: 0;
+    transform: scale(0.2) rotate(-180deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+// 上下漂浮
+@keyframes floatUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes floatShadow {
+  50% {
+    transform: scale(1.2);
+  }
+}
+// 下滑符號
+@keyframes mouseScroll {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(130%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(130%);
+  }
+}
+
+// Animations
+@keyframes progressLine {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+
+
+@keyframes zoomPop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

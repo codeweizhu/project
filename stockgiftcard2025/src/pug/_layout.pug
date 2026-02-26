@@ -1,0 +1,181 @@
+doctype html
+html(lang='zh-Hant-TW')
+  //- 變數
+  block vars
+    - var author = '永豐大戶DAWHO'
+    - var web_title = '新朋友、DAWHO都有優惠！成為DAWHO | 大戶投會員，用會增值的心意，邀朋友一起當大戶！'
+    - var web_url = 'https://dawho.tw/hot/stockgiftcard2025/'
+    - var og_image = 'https://dawho.tw/hot/stockgiftcard2025/img/og-image.png'
+    - var og_desc = '永豐金證券股票禮品卡！即日起至2026/04/07，股票禮品卡可折抵豐存股200+檔台股交割款、手續費、交易稅！成為DAWHO | 大戶投會員，用會增值的心意，邀朋友一起當大戶！'
+    - var schema_classify = '新朋友、DAWHO都有優惠！成為DAWHO | 大戶投會員，用會增值的心意，邀朋友一起當大戶！'
+    - var date_publish = '2025-5-8'
+    - var root = '../../'
+    - var hasfooterNotice = false
+    - var isDawho = true
+  head
+    block head
+      meta(charset='UTF-8')
+      //- Mobile Only
+      meta(name='HandheldFriendly' content='true')
+      meta(name='MobileOptimized' content='320')
+      meta(name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover')
+      meta(name='format-detection' content='telephone=no')
+      meta(http-equiv='X-UA-Compatible' content='ie=edge')
+      //- 不緩存
+      meta(http-equiv='pragma' content='no-cache')
+      meta(http-equiv='Cache-Control' content='no-cache, no-store, must-revalidate')
+      meta(http-equiv='expires' content='0')
+      //- meta info
+      title #{schema_classify ? schema_classify + ' | ' + author : "" }
+      meta(name='title' content=web_title)
+      meta(name='description' content=og_desc)
+      meta(property='og:title' content=web_title)
+      meta(property='og:description' content=og_desc)
+      meta(property='og:url' content=web_url)
+      meta(property='og:image' content=og_image)
+      meta(property='og:type' content='website')
+      meta(property='og:locale' content='zh_TW')
+      meta(property='og:site_name' content='大戶DAWHO - 新世代VIP數位帳戶')
+      //- 標準網址
+      link(rel='canonical' href=web_url)
+      //- favicon
+      link(rel='shortcut icon' href=(root + 'images/favicon.ico') type='image/x-icon')
+      link(rel="preconnect" href="https://fonts.googleapis.com")
+      link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+      link(href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet")
+
+      //- css
+      link(rel='stylesheet' href='./css/all.css')
+      //- link(rel='stylesheet' href='./css/splide.min.css')
+      script(src=(root + 'vendor/js/jquery-latest.min.securejs'))
+      //- 數位足跡
+      script(src=(root + 'js/sensorstrackerV102.js'))
+      //- Appier
+      script(src=(root + 'js/appier.securejs'))
+
+  body
+    block header
+      #header
+        .container
+          #header-toggle
+            a.header-logo(href='https://dawho.tw/hot/dawhotou/' target="_blank")
+              img.logo(src='./img/img_logo.svg' alt='大戶DAWHO | 大戶投DAWHOTOU')
+          //- nav
+          //-   ul
+          //-     li
+          //-       a.header-sec-link(href='#anchor-raffle') 怎麼參加
+          //-     li
+          //-       a.header-sec-link(href='#anchor-level') 大戶等級好康 
+          //-     li
+          //-       a.header-acc-link.basic-btn-style.mediabtn(href="https://applydawho.sinopac.com/OpenAccount/OpenAccount/Login/NewNew?strProd=0174&strWeb=0549&tickset=SIN020&tko=Q2DTOU" target="_blank")
+          //-         span 立即當大戶
+    //- loading
+    case isDawho
+      when true
+        #overlayer
+        .loader
+          .dawho-logo
+            img(src="./img/dawho-logo.svg" alt="DAWHO 大戶")
+          .loading
+            img(src="./img/loading.svg" alt="")
+
+    block content
+
+
+
+    block footer
+      #footer(class= hasfooterNotice ? "hasfooterNotice" : "")
+        if hasfooterNotice
+          p.footerNotice #{hasfooterNotice}
+        .top-wrap
+          img.logo(src=(root+"images/img_logo.svg"), alt="大戶 DAWHO")
+          .list-wrap
+            ul
+              li.title 成為DAWHO
+              li.link
+                a(href="https://applydawho.sinopac.com/OpenAccount/OpenAccount/WhichOne?_sasdk=fNjAwMDE2Mjg2MQ&_ga=2.259495042.989474466.1669257046-747811279.1669113679#" target_blank) 申請DAWHO數位帳戶
+              li.link
+                a(href="https://applydawho.sinopac.com/OpenAccount/appendandinquiry/inquiry#" target_blank) 開戶進度查詢
+              li.link
+                a.openDawhotou(href="https://www.sinotrade.com.tw/openact?strProd=0125&strWeb=0340&utm_source=bankdawhoweb&utm_medium=menu&utm_campaign=sinobank" target_blank) 申請大戶投證券戶
+              li.link
+                a(href=(root+"about/upgrade/")) 提升帳戶權限
+              li.link
+                a(href=(root+"about/memberloyalty/")) 等級優惠查詢
+            ul
+              li.title 生活與消費
+              li.link
+                a(href=(root+"about/card/")) DAWHO 現金回饋卡
+              li.link
+                a(href="https://mma.sinopac.com/SinoCard/Application/ApplicationStatus" target_blank) 信用卡申請進度查詢
+              li.link
+                a(href="https://dawho.tw/hot/cardknows/") 信用卡優惠指定通路
+              li.link
+                a(href=(root+"about/debitcard/")) DAWHO 多幣Debit卡
+            ul
+              li.title 理財與理債
+              li.link
+                a(href=(root+"about/fund/")) 基金
+              li.link
+                a(href=(root+"about/ibrain/")) ibrAin 智能理財
+              li.link
+                a(href=(root+"about/usstock/")) 美股
+              li.link
+                a(href=(root+"hot/dawhotou/")) 大戶投
+              li.link
+                a(href=(root+"about/insurance/")) 保險
+              li.link
+                a(href=(root+"about/personalloan/")) 信貸
+              li.link
+                a(href=(root+"about/mortgage/")) 房貸
+              li.link
+                a(href=(root+"about/casedough/")) 私房錢
+            ul
+              li.title 聯絡我們
+              li.link
+                a(href=(root+"faq/apply/")) 常見問題
+              li.link
+                a.contact-web(href="https://bank.sinopac.com/MMA8/bank/service/service-index.html" target_blank) 銀行客服專線
+                a.contact-mobile(href="tel:0225059999" target_blank) 銀行客服專線
+              li.link
+                a.contact-web(href="https://bank.sinopac.com/MMA8/bank/service/service-index.html" target_blank) 信用卡客服專線
+                a.contact-mobile(href="tel:0225287776" target_blank) 信用卡客服專線
+              li.link
+                a(href="https://www.instagram.com/dawho.tw/" target_blank) Instagram
+
+        .bottom-wrap
+          .links-container
+            a(href="https://www.cdic.gov.tw/main_ch/chinese.html" target="_blank")
+              img.link-img-bank(src=(root+"images/icon_bankmember.svg"), alt="")
+              |存款人存保權益
+            a(href="https://bank.sinopac.com/sinopacBT/about/introduction/announcement/legal-disclaimers.html" target="_blank") 法定公告事項
+            a(href="https://bank.sinopac.com/sinopacBT/footer/privacy-statement.html" target="_blank") 隱私權保護聲明
+            p.fc_white
+              br
+              span 營業人名稱：永豐商業銀行股份有限公司　
+              span 統一編號：86517384
+            p.fc_white
+              br
+              span 登記地址：臺北市中山區南京東路3段36號
+          .copyright-desc ©永豐銀行版權所有
+        .footer--flex
+          p.footer__title 謹慎理財 信用至上
+          p.footer__text
+            | 銀行客服24小時服務專線：(02)2505-9999、0203-08989
+            br
+            | 信用卡客服24小時服務專線：(02)2528-7776、0800-058-888(限市話)
+            br
+            | 循環信用利率5%~15% (基準日2023/3/3)；預借現金手續費：預借現金金額X3.5%+指定金額
+            br
+            | (100元新臺幣/3.5美元/350日圓/3歐元) 其他費用請上
+            a.fc_white(href="https://bank.sinopac.com/sinopacBT/index.html" target="_blank") 永豐銀行
+            | 網站查詢
+
+    block lightbox
+
+    block scripts
+      //- script(src="./js/lib/splide.min.securejs")
+      script(src="./js/lib/gsap.min.securejs")
+      script(src='./js/index.securejs')
+      script(src="./js/lib/ScrollTrigger.min.securejs")
+      //- script(src="./js/lib/jquery.lightbox_me.securejs")

@@ -1,0 +1,57 @@
+- var infoData = []
+- infoData.push({ src:"images/info/slider_setp_1.png", alt:"step 1，下載LINE Pay App", slideTitle:"下載LINE Pay App"})
+- infoData.push({ src:"images/info/slider_setp_2.png", alt:"step 2，選擇新增銀行帳戶 首頁→我的→支付工具→立即新增銀行帳戶", slideTitle:"選擇新增銀行帳戶", slideText:"首頁→我的→支付工具→立即新增銀行帳戶", })
+- infoData.push({ src:"images/info/slider_setp_3.png", alt:"step 3，選擇銀行進入綁定流程 選擇「807 永豐銀行」，依據指示進行綁定", slideTitle:"選擇銀行進入綁定流程", slideText:"選擇「807 永豐銀行」，依據指示進行綁定", })
+- infoData.push({ src:"images/info/slider_setp_4.png", alt:"step 4，成功綁定永豐銀行帳戶 通過綁定驗證流程後，畫面顯示綁定成功", slideTitle:"成功綁定永豐銀行帳戶", slideText:"通過綁定驗證流程後，畫面顯示綁定成功", })
+
+//- 消息輪播區
+section.section-info#section-info
+  .section-info__wrapper
+    h2.info-carousel__title.is-mobile 如何使用 LINE Pay APP
+      br
+      | 連結永豐銀行帳戶？
+    .info-carousel
+      .info-carousel__title 如何使用 LINE Pay APP 連結永豐銀行帳戶？
+
+      //- 輪播
+      .info-carousel__carousel
+        //- 步驟
+        .info-carousel__steps
+          .info-carousel__step.is-active(data-step="0")
+            b.info-carousel__step-label Step 1
+            h3.info-carousel__step-title 下載LINE Pay App
+            .info-carousel__step__progress
+
+          .info-carousel__step(data-step="1")
+            b.info-carousel__step-label Step 2
+            h3.info-carousel__step-title 選擇新增銀行帳戶
+            h4.info-carousel__step-text 首頁→我的→支付工具→立即新增銀行帳戶
+            .info-carousel__step__progress
+
+          .info-carousel__step(data-step="2")
+            b.info-carousel__step-label Step 3
+            h3.info-carousel__step-title 選擇銀行進入綁定流程
+            h4.info-carousel__step-text 選擇「807 永豐銀行」，依據指示進行綁定
+            .info-carousel__step__progress
+
+          .info-carousel__step(data-step="3")
+            b.info-carousel__step-label Step 4
+            h3.info-carousel__step-title 成功綁定永豐銀行帳戶
+            h4.info-carousel__step-text 通過綁定驗證流程後，畫面顯示綁定成功
+            .info-carousel__step__progress
+
+        //- 圖片
+        .swiper.info-carousel__swiper
+          .swiper-wrapper
+            each item in infoData
+              .swiper-slide
+                .info-carousel__wrap
+                  .info-carousel-slide__img
+                    img.info-carousel__image(src=item.src, alt=item.alt)
+                  .info-carousel-slide__step
+                    .info-carousel-slide__step-title= item.slideTitle
+                    .info-carousel-slide__step-text= item.slideText
+          //- desk dot
+          .swiper-pagination.info-carousel__pagination
+          //- mobile dot
+          .swiper-pagination.info-carousel__pagination.is-mobile

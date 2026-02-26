@@ -1,0 +1,604 @@
+doctype html
+html(lang="zh-Hant-TW")
+  block vars
+  - var author = '永豐銀行'
+  - var web_title = 'DAWHO美人雙幣定存'
+  - var web_url = 'https://dawho.tw/hot/dawho-beauty2026/'
+  - var og_title = 'DAWHO美人雙幣定存'
+  - var og_image = 'https://dawho.tw/hot/dawho-beauty2026/images/og-image.png?v=20260226'
+  - var og_desc = '美元新資金定存最高3.88%'
+  - var schema_classify = 'DAWHO美人雙幣定存'
+  - var date_publish = '2026-02-26'
+  - var root = '../../'
+  - var dawhotouMediaCode = true
+  - var isDawho = true
+
+
+  head
+    block head
+      meta(charset="UTF-8")
+      //- Mobile Only
+      meta(name='HandheldFriendly' content='true')
+      meta(name='MobileOptimized' content='320')
+      meta(name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover')
+      meta(name='format-detection' content='telephone=no')
+      meta(http-equiv='X-UA-Compatible' content='ie=edge')
+      //- 不緩存
+      meta(http-equiv='pragma' content='no-cache')
+      meta(http-equiv='Cache-Control' content='no-cache, no-store, must-revalidate')
+      meta(http-equiv='expires' content='0')
+      //- meta info
+      title #{schema_classify ? schema_classify + ' | ' + author : "" }
+      meta(name='title' content=web_title)
+      meta(name='description' content=og_desc)
+      meta(property='og:title' content=web_title ? web_title + ' | ' + author : "" )
+      meta(property='og:description' content=og_desc)
+      meta(property='og:url' content=web_url)
+      meta(property='og:image' content=og_image)
+      meta(property='og:type' content='website')
+      meta(property='og:locale' content='zh_TW')
+      meta(property='og:site_name' content='大戶DAWHO - 新世代VIP數位帳戶')
+      //- 標準網址
+      link(rel='canonical' href=web_url)
+      link(rel='shortcut icon' href=(root + 'images/favicon.ico') type='image/x-icon')
+      link(type="text/css" rel="stylesheet" href="css/styles.css?v=20260225")
+      script(src=(root + 'vendor/js/jquery-latest.min.securejs'))
+
+      link(rel="preconnect" href="https://fonts.googleapis.com")
+      link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+      link(href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet")
+      //- 數位足跡
+      script(src=(root + 'js/sensorstrackerV102.js'))
+      //- Appier
+      script(src=(root + 'js/appier.securejs'))
+
+
+      link(rel='stylesheet' href=('./css/slick.css'))
+      script(src='./js/slick.min.securejs')
+      script(src='./js/gsap.min.securejs')
+
+      //-媒體碼
+      if dawhotouMediaCode
+        //- Google Tag Manager
+        script(async src="https://www.googletagmanager.com/gtag/js?id=AW-17706038752")
+        script.
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'AW-17706038752');
+        script.
+          gtag('event', 'conversion', {'send_to': 'AW-17706038752/BQuQCNHlp70bEODr8vpB'});
+
+        script.
+          function gtag_report_conversion(url) {
+            var callback = function () {
+              if (typeof(url) != 'undefined') {
+                window.location = url;
+              }
+            };
+            gtag('event', 'conversion', {
+                'send_to': 'AW-17706038752/plMzCN2Qqb0bEODr8vpB',
+                'event_callback': callback
+            });
+            return false;
+          }
+
+        //-Meta Pixel Code
+        script.
+          (function () {
+            var host = location.hostname.toLowerCase();
+            var isProd = host === 'dawho.tw' || host === 'bank.sinopac.com';
+            if (!isProd) return;
+
+            setTimeout(function() {
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}
+              (window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '1577523053658223');
+              fbq('track', 'PageView');
+            }, 0);
+          })();
+        noscript
+          img(height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1577523053658223&ev=PageView&noscript=1")
+
+
+      script.
+        $(document).ready(function(){
+          $('.mediabtn').on('click', function (e) {
+            fbq('track', 'Contact');
+            gtag_report_conversion();
+          });
+        })
+
+
+      //- 結構化資料
+      script(type='application/ld+json').
+        {
+          "@context": "https://schema.org",
+          "@type": "Event",
+          "name": "DAWHO美人雙幣定存",
+          "description": "#{og_desc}",
+          "url": "#{web_url}",
+          "image": "#{og_image}",
+          "startDate": "2026-01-26T00:00:00+08:00",
+          "endDate": "2026-03-31T23:59:59+08:00",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+          "location": {
+            "@type": "VirtualLocation",
+            "url": "#{web_url}"
+          },
+          "organizer": {
+            "@type": "Organization",
+            "name": "永豐銀行",
+            "url": "https://bank.sinopac.com",
+            "logo": "https://bank.sinopac.com/sinopacBT/resources/images/logo_bk.png"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "#{web_url}",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+            "validFrom": "2026-01-26T00:00:00+08:00",
+            "validThrough": "2026-03-31T23:59:59+08:00",
+            "description": "美元新資金定存最高3.88%，人民幣新資金定存最高1.3%"
+          }
+        }
+      //- 結構化資料 - Organization 品牌
+      script(type='application/ld+json').
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "永豐銀行",
+          "url": "https://bank.sinopac.com",
+          "logo": "https://bank.sinopac.com/sinopacBT/resources/images/logo_bk.png"
+        }
+      //- 結構化資料 - WebPage 活動頁
+      script(type='application/ld+json').
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "#{web_title}",
+          "url": "#{web_url}",
+          "description": "#{og_desc}",
+          "inLanguage": "zh-Hant",
+          "isPartOf": {
+            "@type": "WebSite",
+            "name": "永豐大戶DAWHO",
+            "url": "https://dawho.tw/"
+          },
+          "breadcrumb": {
+            "@id": "#{web_url}#breadcrumb"
+          }
+        }
+      //- 結構化資料 - Breadcrumb
+      script(type='application/ld+json').
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "@id": "#{web_url}#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "首頁",
+              "item": "https://dawho.tw/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "活動專區",
+              "item": "https://dawho.tw/hot/new/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "DAWHO美人雙幣定存",
+              "item": "#{web_url}"
+            }
+          ]
+        }
+      //- 結構化資料 - FAQ
+      script(type='application/ld+json').
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "什麼是「新資金」？",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "「新資金」係指自2026年1月26日(含)起，由本行各通路兌換並直接存入，或由他行匯入您的外幣活期存款帳戶之美元或人民幣資金。"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "如何查看我的「新資金」額度？",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "點擊下方「立即參加」按鈕，進入定存開單流程後，選擇優惠的幣別/期數(ex.美元3個月)，完成資料填寫，即可查詢您的新資金額度。"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "請問專案定存可辦理自動續存嗎？",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "可辦理自動續存，惟本活動定期存款到期後之自動續存利率將依續存當日永豐銀行牌告利率辦理，不得再以本活動優惠利率辦理續存。"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "若提前解約，利息部分該怎麼計算？",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "如中途解約即不再適用本活動利率。未存滿一個月中途解約者，不予計息；逾一個月以上者，利息應改按起存日永豐銀行一般牌告與實際存款天數相當期別適用之定期存款牌告利率八折單利計息；中途解約時，客戶實際應得利息若「低於」永豐銀行已付利息，永豐銀行將於中途解約返還本金時扣除差額。"
+              }
+            }
+          ]
+        }
+
+  body
+    block header
+      #header
+        .container
+          #header-toggle
+          a.header-logo(href='https://dawho.tw/?strProd=0174&strWeb=0549&tickset=SIN020&tko=Q2DTOU' target="_blank")
+            img.logo(src='./images/img_logo.svg' alt='大戶DAWHO')
+          nav
+            ul
+              li
+                a.header-sec-link(href='https://dawho.tw/hot/new/' target="_blank") 最新消息
+              li
+                a.header-sec-link(href='#notice__toggle') 注意事項
+              li
+                a.header-acc-link.basic-btn-style.mediabtn(href="https://applydawho.sinopac.com/OpenAccount/OpenAccount?_sasdk=fNjAwMDMxNzQ5Mw#" target="_blank")
+                  span 我要當大戶
+    //- loading
+    case isDawho
+      when true
+        #overlayer
+        .loader
+          .dawho-logo
+            img(alt="DAWHO 大戶" src="images/dawho-logo.svg")
+          .loading
+            img(alt="" src="images/loading.svg")
+
+  block content
+    .wrapper
+
+      //-KV
+      .sec1__wrapper
+        .sec1__kv
+          h1.text-title 美人雙幣定存
+          img.sec1__screen(src="images/kv/kv_screen.png")
+          h2.text-title 美元新資金最高3.88%
+          img.sec1__circleUS(src="images/kv/kv_circle_us.png?v=20260226" alt="美元新資金最高3.88%")
+          h2.text-title 人民幣新資金最高1.3%
+          img.sec1__circleCNY(src="images/kv/kv_circle_cny.png?v=20260226" alt="人民幣新資金最高1.3%")
+          img.sec1__title1(src="images/kv/kv_title1.svg" alt="美人")
+          img.sec1__title2(src="images/kv/kv_title2.svg" alt="雙幣定存")
+          img.sec1__title3(src="images/kv/kv_title3.svg?v=20260226" alt="2026/01/26-2026/03/31")
+          //- h3.sec1__desc DAWHO給你台幣活儲優利 + 外幣高利定存
+          //-circle
+          .sec1__circle.sec1__circle-1
+            img(src="images/kv/kv_circle1.svg")
+          .sec1__circle.sec1__circle-2
+            img(src="images/kv/kv_circle2.svg")
+          .sec1__circle.sec1__circle-3
+            img(src="images/kv/kv_circle1.svg")
+          .sec1__circle.sec1__circle-4
+            img(src="images/kv/kv_circle1.svg")
+          .sec1__circle.sec1__circle-5
+            img(src="images/kv/kv_circle2.svg")
+
+      //-main
+      .sec2__main
+        img.sec2__line1(src="images/kv/kv_line.png")
+        img.sec2__line2(src="images/kv/kv_line2.png")
+        img.sec2__star1(src="images/kv/kv_star.svg")
+        img.sec2__star2(src="images/kv/kv_star.svg")
+        img.sec2__star3(src="images/kv/kv_star.svg")
+        img.sec2__star4(src="images/kv/kv_star.svg")
+        img.sec2__star5(src="images/kv/kv_star.svg")
+
+        .sec2__container
+          h2.sec2__title.sec2__title--style.js-animate.js-animate--fadein-up.js-animate--delay200 美人雙幣定存限時專案
+
+          .sec2__condition.js-animate.js-animate--fadein-up.js-animate--delay400
+            p 專案期間：2026/01/26-2026/3/31
+              br.br
+              span.m-left 參與資格：本行自然人客戶
+            p 專案內容：
+            //- ol.disc
+            //-   li 專案期間：2025/07/21-2025/09/30
+            //-   li 參與資格：本行自然人客戶
+            //-   li 活動條件：
+          //-利率
+          .sec2__intro.js-animate.js-animate--fadein-up.js-animate--delay600
+            table.intro-table
+              thead
+                tr
+                  th(width="") 幣別
+                  th(width="") 期別
+                  th(width="" style="color:red") 大戶APP
+                    br
+                    | 新資金優惠
+                    small.txt-small 方案一
+                  th(width="") 一般優惠
+                    small.txt-small 方案二
+              tbody
+                tr
+                  td(rowspan="2") 美元
+                  td 3個月
+                  td
+                    span.mark 3.88%
+                  td -
+                tr
+                  td 6個月
+                  td
+                    span -
+                  td 3.25%
+                tr
+                  td 人民幣
+                  td 6個月
+                  td
+                    span.mark 1.3%
+                  td 1.2%
+                tr
+                  td(colspan="4" style="background:#ffe39a") 起存金額
+                tr
+                  td(colspan="4") 一般優惠：大於選擇幣別100元
+                tr
+                  td(colspan="4") 新資金優惠：大於選擇幣別10,000元
+              tfoot
+                tr
+                  td.t_justify(colspan="4") 大戶APP：「新資金」係指自2026年1月26日(含)起，由本行各通路兌換並直接存入或由他行匯入客戶本人外幣活期存款帳戶之美元或人民幣資金，惟得承作新資金方案之金額需扣除客戶於本活動期間已成功承作「方案一」之定存金額(含透過臨櫃辦理者)及本活動期間客戶已承作之本行其他優惠專案之定存金額(如：換匯優利定存及其他新資金定存專案)。
+          //-步驟
+          .sec2__step
+            h2.sec2__title.js-animate.js-animate--fadein-up.js-animate--delay400 馬上參加雙幣定存
+            //-p.sec3__text-intro 溫馨小提醒：於開立定存時，「幣別」選擇美金或人民幣，「期別」選擇六個月，即享優惠利率喔！
+
+            .sec2__steplist#slide.js-animate.js-animate--fadein-up.js-animate--delay600
+              .flex
+                .list
+                  .list__item.active
+                    img(src='images/kv/kv_step1.png' alt="step1")
+                    | 點選右下角「更多」
+                  .list__item
+                    img(src='images/kv/kv_step2.png' alt="step2")
+                    | 點選「存款」>「定存」
+                  .list__item
+                    img(src='images/kv/kv_step3.png' alt="step3")
+                    | 點選「優惠存款」
+                  .list__item
+                    img(src='images/kv/kv_step4.png' alt="step4")
+                    | 點選「美人雙幣定存限時專案」
+                  .list__item
+                    img(src='images/kv/kv_step5.png' alt="step5")
+                    | 點選「立即參加」
+                .slider
+                  .slider__img
+                    img(src='images/kv/kv_slide1.png' alt="點選右下角「更多」")
+                  .slider__img
+                    img(src='images/kv/kv_slide2.png' alt="點選「存款」>「定存優惠存款」")
+                  .slider__img
+                    img(src='images/kv/kv_slide3.png' alt="點選「優惠存款」")
+                  .slider__img
+                    img(src='images/kv/kv_slide4.png?v=20260226' alt="點選「美人雙幣定存限時專案」")
+                  .slider__img
+                    img(src='images/kv/kv_slide5.png?v=20260226' alt="點選「立即參加」")
+
+      //-常見問題
+      .sec3__wrapper
+        .sec3__container
+
+
+
+
+
+
+
+          //-faq
+          img.sec3__line1(src="images/kv/kv_line.png")
+          h2.sec3__title.js-animate.js-animate--fadein-up.js-animate--delay600 常見問題
+          .sec3__container.js-animate.js-animate--fadein-up.js-animate--delay800
+            //-Q1
+            .sec3__box
+              .sec3__problem
+                h3 什麼是「新資金」？
+              .sec3__answer
+                p 「新資金」係指自2026年1月26日(含)起，由本行各通路兌換並直接存入，或由他行匯入您的外幣活期存款帳戶之美元或人民幣資金。
+            //-Q2
+            .sec3__box
+              .sec3__problem
+                h3 如何查看我的「新資金」額度？
+              .sec3__answer
+                p 點擊下方「立即參加」按鈕，進入定存開單流程後，選擇優惠的幣別/期數(ex.美元3個月)，完成資料填寫，即可查詢您的新資金額度。
+            //-Q3
+            .sec3__box
+              .sec3__problem
+                h3 請問專案定存可辦理自動續存嗎 ?
+              .sec3__answer
+                p 可辦理自動續存，惟本活動定期存款到期後之自動續存利率將依續存當日永豐銀行牌告利率辦理，不得再以本活動優惠利率辦理續存。
+            //-Q4
+            .sec3__box
+              .sec3__problem
+                h3 若提前解約，利息部分該怎麼計算？
+              .sec3__answer 如中途解約即不再適用本活動利率。未存滿一個月中途解約者，不予計息；逾一個月以上者，利息應改按起存日永豐銀行一般牌告與實際存款天數相當期別適用之定期存款牌告利率八折單利計息；中途解約時，客戶實際應得利息若「低於」永豐銀行已付利息，永豐銀行將於中途解約返還本金時扣除差額。
+
+
+
+
+
+          //-注意事項
+          .sec3__notice.notice(data-id="changeBtn").js-animate.js-animate--fadein-up.js-animate--delay800
+            h2.sec3__notice__toggle#notice__toggle 警語與注意事項
+            div.sec3__notice__content
+              ol.decimal
+                li 適用對象：自然人。
+                li 參加客戶須簽署專案同意書，始可辦理本專案。
+                li 大戶APP新資金範例說明(單位：美元)。
+                div.sec3__notice__box
+                  table.intro-table
+                    thead
+                      tr
+                        th(width="20%") 交易日
+                        th(width="30%") 交易說明
+                        th(width="30%") 判斷說明
+                        th(width="20%") 可能做新資金方案之金額
+                    tbody
+                    tr
+                      td 1/26
+                      td 他行臺幣匯入，換匯美元1萬
+                      td 符合新資金定義
+                      td 1萬
+                    tr
+                      td 1/27
+                      td 外幣現鈔存入美元2萬
+                      td 不符合新資金定義
+                      td 1萬
+                    tr
+                      td 1/28
+                      td 他行匯入美元10萬
+                      td 符合新資金定義
+                      td 11萬
+                    tr
+                      td 1/29
+                      td 保險金到期存入美元2萬
+                      td 不符合新資金定義
+                      td 11萬
+                    tr
+                      td 1/30
+                      td 承作本行其他定存專案之新資金方案美元3萬
+                      td 需扣除已承作金額
+                      td 8萬
+                    tr
+                      td 2/2
+                      td 承作換匯優利定存專案美元3萬
+                      td 換匯之金額符合新資金定義，
+                        br
+                        | 但本專案之「新資金」需扣除
+                        br
+                        | 已承作換匯優利定存之金額(8萬+3萬-3萬=8萬)
+                      td 8萬
+                li 除專案同意書另有約定外，本專案存款利息依實際存款期間計算。
+                li 領息方式：得選擇每月領息或到期領息，惟須注意本專案定存之存款利息亦將計入客戶年度利息收入，依法應由永豐銀行代為扣繳者，將依中華民國所得稅法及全民健康保險法相關規定代為扣繳稅款及補充保費。
+                li 本專案不適用申請「活期存款約定自動轉存定期存款」及「自動轉期續存」所開立之定期存款，如於專案期間申請開立前述定期存款，定存利率按開單當日永豐銀行牌告利率辦理。
+                li 如中途解約即不再適用本專案利率。未存滿一個月中途解約者，不予計息；逾一個月以上者，利息應改按起存日永豐銀行一般牌告與實際存款天數相當期別適用之定期存款牌告利率八折單利計息；中途解約時，客戶實際應得利息若「低於」永豐銀行已付利息，永豐銀行將於中途解約返還本金時扣除差額。
+                li 本專案其他定期存款得辦理自動續存，惟本專案定期存款到期後之自動續存利率依續存當日永豐銀行牌告利率辦理，不得再以本專案優惠利率辦理續存。
+                li 本專案定存得依永豐銀行定存質借相關規定辦理質借。
+                li 辦理外匯兌換有匯率風險，自然人透過帳戶買賣人民幣(買、賣限額分別計算)每人每日限額為人民幣20,000元。
+
+
+              p 警語
+              p.symbol 參加本專案之原始本金如涉及幣別轉換，須留意領取本金及孳息兌換為原幣別時，可能低於原始本金之匯兌風險，請審慎考量符合需求後再辦理。
+              p.symbol 本專案未特別約定者，皆依永豐銀行開立帳戶總約定書(含其變更或修訂)相關約定辦理
+              p.symbol 客戶申辦本專案如有不符合資格或違反法令情事，永豐銀行得不予受理。因應市場狀況或不可抗力、不可歸責永豐銀行之事由，永豐銀行保留核准、變更、終止及提前結束或延長本專案之權利。如有異動，將於永豐銀行網站或營業單位公開場所揭示。
+
+
+
+
+
+
+      //-slide-btn
+      .nav
+        .nav__item
+          a.nav__link.mediabtn(href="https://applydawho.sinopac.com/OpenAccount/OpenAccount?_sasdk=fNjAwMDMxNzQ5Mw#" target="_blank") 我要當大戶
+        .nav__item
+          a.nav__link#link(href="dawho://sinopacaction%3A%7Bdeposit_event_apply%7D%7B%7D") 雙幣高利定存
+        .nav__item
+          a.nav__link(href="dawho://sinopacaction%3A%7Bdeposit_event_apply%7D%7B%7D") 立即存
+
+
+
+
+      //-footer
+      footer
+        .container
+          .copyright
+            p
+              | ©版權所有
+              span 永豐銀行
+          .copyright
+            p
+              a(href="https://bank.sinopac.com/sinopacBT/footer/privacy-statement.html" target="_blank") 隱私權聲明
+
+
+
+
+
+
+      //-lightbox
+      .lboxed
+        .lbox-block
+          .close_x
+          #announces
+            p.announce__title 活動結束
+            .announce__content
+              p.announce__sub 感謝您的熱情參與，本活動已截止囉！
+              br
+              p 再次感謝您對永豐銀行DAWHO數位帳戶的支持與愛護。
+              .btn-block
+                //- a.btn.gold3.btn_pad_thin.btn_mg(href='./2025q2dafund-winning-list.pdf?v=20251003' target='_blank' rel='noopener noreferrer') 中獎名單
+                a.btn.white.btn_pad_thin.btn_mg.close(href='#') 關閉
+          img.lbox-gift(src="./img/gift_open.png?v=20260226", alt="")
+
+
+
+
+
+  block scripts
+    script(type="text/javascript" src="js/scripts.securejs?v=20260226")
+    script(type="text/javascript" src="js/jquery.lightbox_me.securejs")
+    script.
+      document.querySelectorAll('a.nav__link[href^="dawho://"]').forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault(); // 阻止預設跳轉行為
+
+          const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+          if (isMobile) {
+            // 小網：跳轉 dawho app
+            window.location.href = this.getAttribute('href');
+          } else {
+            // 大網：跳轉活動頁
+            window.location.href = "https://dmp.sinopac.com/DMP_SA/r/R";
+          }
+        });
+      });
+
+
+
+
+
+      //- if (window.location.href.indexOf("index_app") !== -1) {
+      //-   addBackNav();
+      //- }
+      //- var isMobile =
+      //-   navigator.userAgent.match(/Android/i) ||
+      //-   navigator.userAgent.match(/webOS/i) ||
+      //-   navigator.userAgent.match(/iPhone/i) ||
+      //-   navigator.userAgent.match(/iPad/i) ||
+      //-   navigator.userAgent.match(/iPod/i) ||
+      //-   navigator.userAgent.match(/BlackBerry/i) ||
+      //-   navigator.userAgent.match(/Windows Phone/i);
+      //-   function addBackNav () {
+      //-     var backBtn = $(".header__back-btn");
+      //-     if (isMobile) {
+      //-     backBtn.addClass('active');
+      //-   }
+      //-   // 返回頁
+      //-   backBtn.on("click", function (e) {
+      //-     e.preventDefault();
+      //-     window.location = "dawho://sinopacaction:{cd_bankbal}{}";
+      //-   });
+      //- }

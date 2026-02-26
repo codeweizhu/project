@@ -1,0 +1,258 @@
+.section-faq {
+  width: 100%;
+  background: #5A4E4C;
+  overflow: hidden;
+  position: relative;
+  &__wrapper {
+    padding: 100px 0;
+    @include breakpoint(lg) {
+      padding: vw1279(100px) 0;
+    }
+    @include breakpoint(sm) {
+      padding: vwm(100px) 0 vwm(200px) 0;
+    }
+  }
+  &__light {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1;
+    background: radial-gradient(at center , $gold-100 0%, rgba(#CEB071, 0) 70%);
+    opacity: 0.3;
+  }
+  &__L {
+    width: 480px;
+    height: 480px;
+    // background-image: url("../images/faq/bg-L.svg");
+    // background-size: contain;
+    // background-repeat: no-repeat;
+    // background-position: center;
+  }
+  &__S {
+    width: 320px;
+    height: 320px;
+    // background-image: url("../images/faq/bg-S.svg");
+    // background-size: contain;
+    // background-repeat: no-repeat;
+    // background-position: center;
+  }
+  &--left {
+    bottom: -205px;
+    right: calc(50% + 445px);
+  }
+  &--right {
+    top: 86px;
+    left: calc(50% + 430px);
+  }
+  &__title {
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    z-index: 2;
+    @include breakpoint(lg) {
+      font-size: vw1279(50px);
+    }
+    @include breakpoint(sm) {
+      font-size: vwm(62px);
+    }
+    &--mb {
+      margin-bottom: 32px;
+      @include breakpoint(lg){
+        margin-bottom: vw1279(32px);
+      }
+      @include breakpoint(sm) {
+        margin-bottom: vwm(32px);
+      }
+    }
+  }
+  &__list {
+    margin: 0 20px; // 與側邊的安全距離
+    position: relative;
+    z-index: 2;
+    @include breakpoint(lg) {
+      margin: 0 vw1279(20px);
+    }
+    @include breakpoint(sm) {
+      margin: 0 vwm(50px);
+    }
+  }
+  &__box {
+    margin: 0 auto;
+    max-width: 996px;
+    display: flex;
+    flex-direction: column;
+    @include breakpoint(lg) {
+      max-width: 0 vw1279(996px);
+    }
+  }
+  &__item {
+    background-color: white;
+    border-radius: 20px;
+    margin-bottom: 14px;
+    padding: 24px;
+    @include breakpoint(lg) {
+      border-radius: vw1279(20px);
+      margin-bottom: vw1279(14px);
+      padding: vw1279(24px);
+    }
+    @include breakpoint(sm) {
+      border-radius: vwm(20px);
+      padding: vwm(36px);
+      margin-bottom: vwm(24px);
+    }
+
+    &:last-child{
+      margin-bottom: 0; // 最後一個不要有margin-bottom
+    }
+  }
+  &__toggle{
+    all: unset;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    &:hover{
+      .section-faq__icon {
+        background: #D17C5F;
+        .rec::after, .rec::before {
+          background-color: white;
+        }
+      }
+    }
+  }
+  &__num {
+    color: #D17C5F;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    text-align: left;
+    @include breakpoint(lg) {
+      margin-bottom: vw1279(8px);
+    }
+    @include breakpoint(sm) {
+      font-size: vwm(32px);
+      margin-bottom: vwm(12px);
+    }
+  }
+  &__text {
+    color: #5A4E4C;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+    text-align: justify;
+    margin-right: 8px;
+    @include breakpoint(lg) {
+      font-size: vw1279(24px);
+      margin-right: vw1279(8px);
+    }
+    @include breakpoint(sm) {
+      font-size: vwm(32px);
+      margin-right: vwm(8px);
+    }
+  }
+  &__icon{
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #D17C5F;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.45s cubic-bezier(0.22, 0.61, 0.35, 1);
+    flex-shrink: 0; // 不被壓縮
+    position: relative;
+    @include breakpoint(lg) {
+      width: vw1279(44px);
+      height: vw1279(44px);
+      border-radius: vw1279(10px);
+    }
+    @include breakpoint(sm) {
+      width: vwm(84px);
+      height: vwm(84px);
+      border-radius: vwm(20px);
+      margin-left: vem(24px);
+    }
+    .rec {
+      &::after,
+      &::before{
+        position: absolute;
+        content: "";
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #D17C5F;
+        transition: all 0.45s cubic-bezier(0.22, 0.61, 0.35, 1);
+      }
+
+      &::after {
+        width: 1.5px;
+        height: 36%;;
+      }
+
+      &::before {
+        width: 36%;
+        height: 1.5px;
+      }
+    }
+  }
+
+
+  [aria-expanded="true"]{
+    .section-faq__icon {
+      .rec::after, .rec::before {
+        transform: translate(-50%, -50%) rotate(90deg);
+      }
+      .rec::before{
+        opacity: 0;
+      }
+    }
+  }
+
+  &__answer{
+    max-height: 0;
+    height: auto;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    color: #5A4E4C;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    line-height: 1.6;
+    @include breakpoint(lg) {
+      font-size: vw1279(24px);
+    }
+    @include breakpoint(sm) {
+      font-size: vwm(28px);
+    }
+  }
+
+  &__answer-content{
+    margin-top: 20px;
+    margin-bottom: 4px;
+    padding-top: 20px;
+    border-top: 1px solid #D17C5F;
+    text-align: justify;
+    font-weight: 400;
+    @include breakpoint(lg) {
+      margin-top: vw1279(20px);
+      margin-bottom: vw1279(4px);
+      padding-top: vw1279(20px);
+    }
+    @include breakpoint(sm) {
+      margin-top: vwm(30px);
+      padding-top: vwm(30px);
+      margin-bottom: 0;
+    }
+  }
+  &.active{
+    max-height: 300px; // 足夠大以容納文字
+  }
+}

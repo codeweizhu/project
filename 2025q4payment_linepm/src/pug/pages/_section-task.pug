@@ -1,0 +1,80 @@
+//- input區
+.section-task
+  img.bg-ellipse.bg-ellipse__L.bg-ellipse--left(src="images/task/ellipse_L.svg", alt="背景月亮-大")
+  img.bg-ellipse.bg-ellipse__S.bg-ellipse--right(src="images/task/ellipse_S.svg", alt="背景月亮-小")
+  .section-task__wrapper#section-task
+    h2.task-title
+      | DAWHO數位帳戶
+      br.task-mobile
+      | 完成首綁任務
+      br
+      | 登錄抽AirPods Pro 3
+
+    .task-content
+      //- 卡片區
+      .task-content__card-container
+        //- line pay首次完成
+        a.task-content__card#pomp(href="#" target="_blank" rel="noopener noreferrer")
+          h3.task-content__content LINE Pay Money首次完成
+            br
+            | 連結永豐銀行帳戶
+          h3.task-content__text 享
+            span.task-content__text--highlight 30
+            | 元
+            br.task-mobile
+            | 儲值金回饋
+          .task-content__num 01
+          .task-content__icon
+            img(src="images/task/task-gift-icon.svg", alt="禮物")
+
+        //- 完成dawho懂生活pro
+        a.task-content__card(href="https://dawho.tw/hot/2025MGM/" target="_blank" rel="noopener")
+          h3.task-content__content
+            | 完成「DAWHO好友推薦」
+            br
+            | 活動任務
+          h3.task-content__text.task-content__text--mt 新/舊朋友皆享
+          h3.task-content__text 享
+            span.task-content__text--highlight 200
+            | 元
+            br.task-mobile
+            | 現金回饋
+          .task-content__num 02
+          .task-content__icon
+            img(src="images/task/task-money-icon.svg", alt="錢袋")
+
+
+      //-表單
+      #form
+        .task-content__form
+          .form__group
+            label.form__label(for="cardID") 身分證統一編號 *
+            input#cardID.form__input(type="text", placeholder="請輸入身分證字號" maxlength="10" disabled)
+            .form__errorMessage.hidden 請輸入含字首大寫英文字母10位字元
+
+          .form__group
+            label.form__label(for="phoneNum") 手機號碼 *
+            input#phoneNum.form__input(type="text", placeholder="請輸入手機號碼" maxlength="10" disabled)
+            .form__errorMessage.hidden 請輸入正確手機號碼
+
+          .form__group
+            label.form__label(for="captNum") 驗證碼 *
+            .form__captcha
+              input#captNum.form__input.captcha(type="text", placeholder="請輸入驗證碼" maxlength="4" disabled)
+
+              .form__box
+                img#captcha.form__captcha--img(src="images/task/captcha.png", alt="驗證碼圖片")
+                button#captchaReload.form__captcha--reload(type="button")
+                  img(src="images/task/reload.svg", alt="重新載入")
+
+          //- 詳閱條款勾選
+          .form__check
+            input#termsAT(type="checkbox" name="termsAT" disabled)
+            label(for="termsAT")
+              .form__check--text
+                | 本人已詳閱
+                a.form__check--text-link(href="https://bank.sinopac.com/sinopacBT/webevents/personal_download/個人資料蒐集處理及利用.pdf?_sasdk=dMTk3YmY4ODJjMmQxZGQtMDVhZTg3OGNkMTRiODA0LTRjNjU3YjU4LTkyMTYwMC0xOTdiZjg4MmMyZTVmZg" target="_blank") 「永豐銀行個人資料蒐集、處理及利用告知義務內容」
+                | ，並填寫資料作為本活動登錄使用，本人同意提供相關個人資料，以作為本活動使用並候備查，請按「立即登錄」。
+
+
+    button.task-send-btn#dataSubmit(type="submit") 資料送出

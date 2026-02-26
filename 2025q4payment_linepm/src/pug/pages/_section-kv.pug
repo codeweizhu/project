@@ -1,0 +1,120 @@
+- var tigerBG = []
+- tigerBG.push({bg: "images/kv/card-bg-01.png", bgAlt: "卡片背景01", tiger: "images/kv/tiger/tiger-01.svg", tigerAlt: "老虎01"})
+- tigerBG.push({bg: "images/kv/card-bg-02.png", bgAlt: "卡片背景02", tiger: "images/kv/tiger/tiger-02.svg", tigerAlt: "老虎02"})
+- tigerBG.push({bg: "images/kv/card-bg-03.png", bgAlt: "卡片背景03", tiger: "images/kv/tiger/tiger-03.svg", tigerAlt: "老虎03"})
+- tigerBG.push({bg: "images/kv/card-bg-04.png", bgAlt: "卡片背景04", tiger: "images/kv/tiger/tiger-04.svg", tigerAlt: "老虎04"})
+- tigerBG.push({bg: "images/kv/card-bg-05.png", bgAlt: "卡片背景05", tiger: "images/kv/tiger/tiger-05.svg", tigerAlt: "老虎05"})
+- tigerBG.push({bg: "images/kv/card-bg-06.png", bgAlt: "卡片背景06", tiger: "images/kv/tiger/tiger-06.svg", tigerAlt: "老虎06"})
+
+//- mixin area
+mixin cardImg(index=0)
+  if index === 0
+    //- 貼面老虎
+    .popCard-0
+      img.popCard-0--tiger.tiger(src="images/kv/bigTiger/bigTiger_01.svg" alt="大老虎01", loading="lazy")
+      img.tigerCard--mirror-effect(src="images/kv/mirror_effect.png", alt="鏡面", loading="lazy")
+      img.tigerCard--phone(src="images/kv/phone.png", alt="手機外殼", loading="lazy")
+  else if index === 1
+    //- 火鍋老虎
+    .popCard-1
+      img.popCard-1-shadow.shadow(src="images/kv/bigTiger/b-2-shadow.svg" alt="陰影", loading="lazy")
+      img.popCard-1--tiger.tiger(src="images/kv/bigTiger/bigTiger_02.svg" alt="大老虎02", loading="lazy")
+      img.popCard-1-01.dec(src="images/kv/bigTiger/b-2-1.svg" alt="裝飾01", loading="lazy")
+      img.popCard-1-02.dec(src="images/kv/bigTiger/b-2-2.svg" alt="裝飾02", loading="lazy")
+      img.popCard-1-04.dec(src="images/kv/bigTiger/b-2-4.svg" alt="裝飾04", loading="lazy")
+      img.popCard-1-05.dec(src="images/kv/bigTiger/b-2-5.svg" alt="裝飾05", loading="lazy")
+      img.popCard-1-06.dec(src="images/kv/bigTiger/b-2-6.svg" alt="裝飾06", loading="lazy")
+      img.popCard-1-07.dec(src="images/kv/bigTiger/b-2-7.svg" alt="裝飾07", loading="lazy")
+      img.popCard-1-08.dec(src="images/kv/bigTiger/b-2-8.svg" alt="裝飾08", loading="lazy")
+  else if index === 2
+    //- 超商老虎
+    .popCard-2
+      img.popCard-2-shadow.shadow(src="images/kv/bigTiger/b-3-shadow.svg" alt="陰影", loading="lazy")
+      img.popCard-2--tiger.tiger(src="images/kv/bigTiger/bigTiger_03.svg" alt="大老虎03", loading="lazy")
+      img.popCard-2-01.dec(src="images/kv/bigTiger/b-3-1.svg" alt="裝飾01", loading="lazy")
+      img.popCard-2-02.dec(src="images/kv/bigTiger/b-3-2.svg" alt="裝飾02", loading="lazy")
+      img.popCard-2-03.dec(src="images/kv/bigTiger/b-3-3.svg" alt="裝飾03", loading="lazy")
+      img.popCard-2-04.dec(src="images/kv/bigTiger/b-3-4.svg" alt="裝飾04", loading="lazy")
+  else if index === 3
+    //- 飛機老虎
+    .popCard-3
+      img.popCard-3-shadow.shadow(src="images/kv/bigTiger/b-4-shadow.svg" alt="陰影", loading="lazy")
+      img.popCard-3--tiger.tiger(src="images/kv/bigTiger/bigTiger_04.svg" alt="大老虎04", loading="lazy")
+      img.popCard-3-01.dec(src="images/kv/bigTiger/b-4-1.svg" alt="裝飾01", loading="lazy")
+      img.popCard-3-02.dec(src="images/kv/bigTiger/b-4-2.svg" alt="裝飾02", loading="lazy")
+      img.popCard-3-03.dec(src="images/kv/bigTiger/b-4-3.svg" alt="裝飾03", loading="lazy")
+  else if index === 4
+    //- 咖啡廳老虎
+    .popCard-4
+      img.popCard-4-shadow.shadow(src="images/kv/bigTiger/b-5-shadow.svg" alt="裝飾03", loading="lazy")
+      img.popCard-4--tiger.tiger(src="images/kv/bigTiger/bigTiger_05.svg" alt="大老虎05", loading="lazy")
+      img.popCard-4-01.dec(src="images/kv/bigTiger/b-5-1.svg" alt="裝飾01", loading="lazy")
+      img.popCard-4-02.dec(src="images/kv/bigTiger/b-5-2.svg" alt="裝飾02", loading="lazy")
+      img.popCard-4-03.dec(src="images/kv/bigTiger/b-5-3.svg" alt="裝飾03", loading="lazy")
+  else if index === 5
+    //- 購物老虎
+    .popCard-5
+      img.popCard-5-shadow.shadow(src="images/kv/bigTiger/b-6-shadow.svg" alt="陰影", loading="lazy")
+      img.popCard-5--tiger.tiger(src="images/kv/bigTiger/bigTiger_06.svg" alt="大老虎06", loading="lazy")
+      img.popCard-5-01.dec(src="images/kv/bigTiger/b-6-1.svg" alt="裝飾01", loading="lazy")
+      img.popCard-5-02.dec(src="images/kv/bigTiger/b-6-2.svg" alt="裝飾02", loading="lazy")
+      img.popCard-5-03.dec(src="images/kv/bigTiger/b-6-3.svg" alt="裝飾03", loading="lazy")
+      img.popCard-5-04.dec(src="images/kv/bigTiger/b-6-4.svg" alt="裝飾04", loading="lazy")
+
+
+//- mixin area
+
+//- KV區
+.section-kv
+  .section-kv__wrapper
+    //- 背景跑馬燈
+    .bg-marquee
+
+    //- 內容
+    .kv-area
+      //- 文字區
+      .kv-area__content
+        .kv-area__box
+          .kv-area__content--date 2025.12.3 15:00-2025.12.31
+          .kv-area__content--logo
+            img.logo-bank(src="images/kv/sinoBank-logo.svg" alt="sinoBank-logo", loading="lazy")
+            img.logo-line(src="images/kv/line-pay-logo.svg" alt="line-pay-logo", loading="lazy")
+          .kv-area__content--title-wrap
+            //- 星星
+            .stars-container#starsContainer
+            //- 標題區
+            h1.kv-area__content--title
+              .txt-title 最佳DA配
+              span.title-text-char
+                img(src="images/kv/txt-chi-01.svg" alt="最", loading="lazy")
+              span.title-text-char
+                img(src="images/kv/txt-chi-02.svg" alt="佳", loading="lazy")
+              .title-text-eng-group
+                span.title-text-char
+                  img(src="images/kv/txt-D.svg" alt="D", loading="lazy")
+                span.title-text-char
+                  img(src="images/kv/txt-A.svg" alt="A", loading="lazy")
+              span.title-text-char
+                img(src="images/kv/txt-chi-03.svg" alt="配", loading="lazy")
+          .kv-area__content--info-box DAWHO 完成任務抽 AirPods Pro 3
+
+      //- 輪播手機
+      .kv-area__slideBox
+        .splide#kvsplide
+          .splide__track
+            ul.splide__list
+              each item, index in tigerBG
+                li.splide__slide.tigerCard
+                  img.tigerCard--bg(src=item.bg, alt=item.bgAlt, loading="lazy")
+                  img.tigerCard--tiger(class=`tigerCard--tiger-${index}`)(src=item.tiger, alt=item.tigerAlt, loading="lazy")
+                  img.tigerCard--mirror-effect(src="images/kv/mirror_effect.png" alt="鏡面", loading="lazy")
+                  img.tigerCard--phone(src="images/kv/phone.png" alt="手機外殼", loading="lazy")
+                  .tigerCard--pop
+                    .tigerCard--pop--wrapper
+                      +cardImg(index)
+
+  //- scroll down
+  #kv-scroll
+    #scroll-circle
+      .dot
+    span Scroll Down

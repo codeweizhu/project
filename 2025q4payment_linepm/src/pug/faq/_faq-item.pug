@@ -1,0 +1,11 @@
+mixin faq-item(num, title, content)
+  .section-faq__item
+    button.section-faq__toggle.toggle(type="button" data-target=`#faq${num}` aria-expanded="false")
+      .section-faq__title
+        .section-faq__num Q#{num}.
+        .section-faq__text #{title}
+      .section-faq__icon
+        .rec
+
+    .section-faq__answer(id=`faq${num}`)
+      .section-faq__answer-content #{content}

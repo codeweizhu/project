@@ -1,0 +1,554 @@
+'use strict';
+
+$(document).ready(function () {
+  // Loading
+  $(window).on("load", function () {
+    $.Window = $(window);
+    $.Body = $("body");
+    // 顯示頁面並隱藏 loader
+    $("body").css("visibility", "visible");
+    $(".loader").delay(500).fadeOut("slow");
+    $("#overlayer").delay(500).fadeOut("slow");
+  });
+
+  // LightBox 顯示 //
+  function LightBoxTargetShow(target) {
+    var lightbox = document.querySelector('.lightbox');
+    // 開啟遮罩
+    document.body.classList.add('scroll-fixed');
+
+
+    // 關閉 Lightbox
+    var close_lightbox = function (e) {
+      // console.log('close');
+      lightbox.classList.remove('lightbox--active');
+      document.body.classList.remove('scroll-fixed');
+      return false;
+    };
+    document
+      .querySelector('.lightbox__btn-close')
+      .addEventListener('click', function (e) {
+        close_lightbox();
+        return false;
+      });
+
+    // 開啟 Lightbox
+    lightbox.classList.add('lightbox--active');
+    return false;
+  }
+  LightBoxTargetShow();
+
+});
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded',function(){
+  gsapAni();
+}, { once: true });
+function gsapAni() {
+  // ---------------------------
+  // 常數與工具
+  // ---------------------------
+  const star_count = 10;
+  const star_img = 'images/kv/star.svg';
+  const rand = gsap.utils.random;
+
+  // ---------------------------
+  // 星星噴發動畫
+  // ---------------------------
+  function animateStars() {
+    const container = document.getElementById('starsContainer');
+    if (!container) {
+      console.error('[gsapAni] #starsContainer not found.');
+      return;
+    }
+
+    // 若已經建立過，先清空避免重覆 append 造成記憶體浪費
+    container.innerHTML = '';
+
+    // 用 DocumentFragment 減少多次 reflow
+    const frag = document.createDocumentFragment();
+    const stars = [];
+
+    for (let i = 0; i < star_count; i++) {
+      const star = document.createElement('img');
+      star.src = star_img;
+      star.alt = '星星';
+      star.className = 'star';
+      frag.appendChild(star);
+      stars.push(star);
+    }
+    container.appendChild(frag);
+
+    // 初始狀態（避免第一次補間時跳動）
+    gsap.set(stars, {
+      x: 0,
+      y: 0,
+      opacity: 0,
+      scale: 0,
+      transformOrigin: '50% 50%',
+      willChange: 'transform, opacity'
+    });
+
+    // 以 keyframes + function-based values 簡化兩段動畫邏輯
+    const tl = gsap.timeline({ repeat: 0, delay: 1 });
+
+    // 第一段：從中心點隨機噴發 -> 收回
+    tl.to(stars, {
+      keyframes: [
+        {
+          // 隨機向外位移與放大
+          x: () => Math.cos(rand(0, Math.PI * 2, true)()) * rand(50, 100, true)() * 1.75,
+          y: () => Math.sin(rand(0, Math.PI * 2, true)()) * rand(50, 100, true)(),
+          opacity: 1,
+          scale: () => rand(1, 3, true)(),
+          duration: 0.6,
+          ease: 'power1.inOut'
+        },
+        {
+          // 收回到 scale:0
+          scale: 0,
+          duration: 0.2,
+          ease: 'power2.in'
+        }
+      ],
+      stagger: 0.08
+    });
+
+    // 停留
+    tl.to({}, { duration: 1.2 });
+
+    // 第二段：換位置閃一下 -> 再消失
+    tl.to(stars, {
+      keyframes: [
+        {
+          // 先把元素直接擺到新座標，從 0 透明 | scale:0 起
+          x: () => Math.cos(rand(0, Math.PI * 2, true)()) * rand(50, 100, true)() * 1.75,
+          y: () => Math.sin(rand(0, Math.PI * 2, true)()) * rand(50, 100, true)(),
+          opacity: 0,
+          scale: 0,
+          duration: 0 // 立即設置
+        },
+        {
+          opacity: 1,
+          scale: () => rand(1, 2.5, true)(),
+          duration: 0.3,
+          ease: 'back.out(2)'
+        },
+        {
+          opacity: 0,
+          scale: 0,
+          duration: 0.4,
+          ease: 'power2.in'
+        }
+      ],
+      stagger: 0.08
+    });
+
+    // 結束前停留
+    tl.to({}, { duration: 0.3 });
+  }
+
+  // ---------------------------
+  // 標題文字動畫
+  // ---------------------------
+  function animateTitleChars() {
+    const chars = document.querySelectorAll('.title-text-char');
+    if (!chars.length) return;
+
+    // 預先產生亂數陣列（避免每次重算導致閃動）
+    const randomY = Array.from({ length: chars.length }, () => gsap.utils.random(5, 10, true)());
+    const randomRot = Array.from({ length: chars.length }, () => gsap.utils.random(-8, 8, true)());
+
+    const tl = gsap.timeline({
+      repeat: 0,
+      delay: 2,
+      onComplete() {
+        document.querySelectorAll('.title-text-eng-group')
+          .forEach(el => el.classList.add('title-text-animation'));
+      }
+    });
+
+    // 上拋
+    tl.to(chars, {
+      y: (i) => -randomY[i],
+      scale: 1.05,
+      rotation: (i) => randomRot[i],
+      duration: 0.5,
+      ease: 'power1.out',
+      stagger: 0.1
+    });
+
+    // 保持一段時間後回位
+    tl.to({}, { duration: 2 }); // 原程式邏輯 index*0.1 + 2.5 的等待，改為單一節點維持
+    tl.to(chars, {
+      y: 0,
+      scale: 1,
+      rotation: 0,
+      duration: 0.5,
+      ease: 'power1.inOut',
+      stagger: 0.1
+    });
+
+    // 小停頓
+    tl.to({}, { duration: 0.5 });
+  }
+
+  // 執行
+  animateStars();
+  animateTitleChars();
+}
+
+
+
+
+// scrollAnim //
+function scrollAnim() {
+  var pageTop = $(document).scrollTop();
+  var pageBottom = pageTop + $(window).height();
+  var tags = $(".js-animate");
+  var activeOffset = 30;
+
+  tags.each(function (index) {
+    if ($(this).offset().top < pageBottom - activeOffset) {
+      $(this).addClass("js-animate--active");
+    } else {
+      $(this).removeClass("js-animate--active");
+    }
+  });
+}
+scrollAnim(); // init
+$(document).on("scroll", scrollAnim);
+
+
+
+(function () {
+  // 計算side-btn和#footer的距離，和kv-scroll的出場時機
+  // 取得元素在文件中的絕對 bottom
+  function getElementBottom(el, scrollY) {
+    var rect = el.getBoundingClientRect();
+    return rect.bottom + scrollY;
+  }
+
+  // 取得元素在文件中的絕對 top
+  function getElementTop(el, scrollY) {
+    var rect = el.getBoundingClientRect();
+    return rect.top + scrollY;
+  }
+
+  var sideBtn = document.querySelector(".side-btn");
+  var sideBtnMb = document.querySelector(".side-btn-mobile");
+  var kvScroll = document.querySelector("#kv-scroll");
+  var footer = document.querySelector("#footer");
+
+  // 初始設定
+  sideBtn.style.pointerEvents = 'none';
+  sideBtn.style.opacity = 0;
+  sideBtnMb.style.pointerEvents = 'none';
+  sideBtnMb.style.opacity = 0;
+
+  window.addEventListener("scroll", function () {
+    var scrollY = window.scrollY || window.pageYOffset;
+    var viewportHeight = window.innerHeight;
+
+    // kvScroll 的 top
+    var kvScrollTop = getElementTop(kvScroll, scrollY);
+
+    // 判斷是否進入螢幕 10%
+    var showBtn = scrollY + viewportHeight * 0.1 >= kvScrollTop;
+
+    // footer 的 top
+    var footerTop = getElementTop(footer, scrollY);
+
+    // side-btn 桌機版
+    if (sideBtn) {
+      var sideBtnBottom = getElementBottom(sideBtn, scrollY);
+      var distanceFooterToSideBtn = footerTop - sideBtnBottom;
+
+      if (showBtn && distanceFooterToSideBtn > 60) {
+        gsap.to(sideBtn, { opacity: 1, duration: 0.5, pointerEvents: 'auto' });
+      } else {
+        gsap.to(sideBtn, { opacity: 0, duration: 0.5, pointerEvents: 'none' });
+      }
+    }
+
+    // side-btn-mobile 手機版
+    if (sideBtnMb) {
+      var sideBtnMbBottom = getElementBottom(sideBtnMb, scrollY);
+      var distanceFooterToSideBtnMb = footerTop - sideBtnMbBottom;
+
+      if (showBtn && distanceFooterToSideBtnMb > 40) {
+        gsap.to(sideBtnMb, { opacity: 1, duration: 0.5, pointerEvents: 'auto' });
+      } else {
+        gsap.to(sideBtnMb, { opacity: 0, duration: 0.5, pointerEvents: 'none' });
+      }
+    }
+  });
+})();
+
+
+
+// =======================KV 區 ScrollDown按鈕=========================//
+$("#kv-scroll").on("click", function () {
+  var target = $(".section-task")[0]; // DOM element
+  var percent = 0.05;
+  var targetTop = target.getBoundingClientRect().top + window.scrollY;
+  var scrollTo = targetTop - window.innerHeight * percent;
+  window.scrollTo({
+    top: scrollTo, behavior: "smooth" // 平滑滾動
+  });
+});
+// ===================================================================//
+
+
+
+
+// =================================錨點=================================//
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href').substring(1);
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      const headerOffset = 20;
+      const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - headerOffset,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+// =====================================================================//
+
+
+
+
+// =================================選單=================================//
+$("#header a.header-sec-link").on("click", function () {
+  $("#header-toggle").removeClass("toggled");
+  $(".container__link").removeClass("toggled");
+});
+$("#header-toggle").on("click", function () {
+  $(this).toggleClass("toggled");
+  $(".container__link").toggleClass("toggled");
+});
+// =====================================================================//
+
+
+
+
+// =============FAQ常見問題手風琴打開功能(只能允許展開一個)=================//
+document.querySelectorAll(".section-faq__toggle").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    var target = document.querySelector(btn.dataset.target);
+    var expanded = btn.getAttribute("aria-expanded") === "true";
+
+    // 先把其他手風琴收回
+    document.querySelectorAll(".section-faq__toggle").forEach(function (otherBtn) {
+      if (otherBtn !== btn) {
+        var otherTarget = document.querySelector(otherBtn.dataset.target);
+        otherBtn.setAttribute("aria-expanded", "false");
+        otherTarget.style.maxHeight = 0;
+      }
+    });
+
+    // 切換當前手風琴
+    btn.setAttribute("aria-expanded", !expanded);
+    if (!expanded) {
+      target.style.maxHeight = target.scrollHeight + "px";
+    } else {
+      target.style.maxHeight = 0;
+    }
+  });
+});
+
+
+// =====================================================================//
+
+
+
+
+// ===============================notice開關============================//
+$('.notice__toggle').click(function (e) {
+  e.preventDefault();
+  $('.section-notice__container').slideDown();
+  $('.notice__toggle').toggleClass('active');
+  $('.notice__icon').toggleClass('active');
+  if (!$('.notice__toggle').hasClass('active')) {
+    var isSmallScreen = $(window).width() <= 768;
+    if (isSmallScreen) {
+      window.scrollTo({
+        top: $('.section-notice').offset().top - 50,
+        behavior: "smooth" //
+      });
+    } else {
+      $('html, body').animate({
+        scrollTop: $('.section-notice').offset().top - 50
+      }, 0);
+    }
+    $('.section-notice__container').slideUp();
+  }
+});
+
+
+// =====================================================================//
+
+
+
+
+// ======================輪播Info Carousel============================//
+document.addEventListener('DOMContentLoaded', function () {
+  //splide
+  var splide = new Splide('.splide', {
+    type: 'loop',
+    drag: true,
+    // focus: '0', // 從左邊對齊
+    focus: 'center', // 從左邊對齊
+    perPage: 3,
+    gap: 42,
+    padding: 0,
+    speed: 2000,
+    arrows: false,
+    pagination: false,
+    autoScroll: {
+      speed: 1,
+      pauseOnHover: false,
+    },
+    breakpoints: {
+      768: { // 當 viewport <= 768px
+        perPage: 1, // 改成顯示 1 張
+        focus: 'center',
+        gap: 52
+      },
+      390: {
+        gap: 35
+      }
+    }
+  });
+  splide.mount(window.splide.Extensions);
+
+
+  //Swiper
+  var infoSwiper = void 0;
+  function initInfoSwiper() {
+    var isMobile = window.innerWidth <= 768;
+
+    if (infoSwiper) {
+      infoSwiper.destroy(true, true);
+    }
+
+    var config = {
+      loop: true,
+      grabCursor: true,
+      observer: true,
+      observeParents: true,
+      pagination: {
+        el: isMobile ? ".info-carousel__pagination.is-mobile" : ".info-carousel__pagination",
+        clickable: true
+      },
+      on: {
+        slideChange: function slideChange(swiper) {
+          var index = swiper.realIndex;
+
+          document.querySelectorAll(".info-carousel__step").forEach(function (el, i) {
+            el.classList.toggle("is-active", i === index);
+            el.classList.toggle("is-inactive", i !== index);
+          });
+        }
+      }
+    };
+
+    if (isMobile) {
+      // 手機設定
+      config.slidesPerView = 1.1;
+      // config.spaceBetween = 40;
+      config.centeredSlides = false;
+      config.autoplay = {
+        delay: 5000,
+        disableOnInteraction: false
+      };
+      config.breakpoints = {
+        0: {
+          slidesOffsetBefore: 12,
+          spaceBetween: 12
+        },
+        768: {
+          slidesOffsetBefore: 22,
+          spaceBetween: 22
+        },
+        // 990: {
+        //   slidesOffsetBefore: 30,
+        //   spaceBetween: 30
+        // }
+      };
+    } else {
+      // 桌機設定
+      config.effect = "fade";
+      config.speed = 500;
+      config.fadeEffect = { crossFade: true };
+      config.autoplay = {
+        delay: 5000,
+        disableOnInteraction: false
+      };
+    }
+
+    infoSwiper = new Swiper(".info-carousel__swiper", config);
+
+    // 綁定互動事件（只在桌機啟用 hover 效果）
+    var steps = document.querySelectorAll(".info-carousel__step");
+    steps.forEach(function (el, i, all) {
+      el.onmouseenter = null;
+      el.onmouseleave = null;
+      el.onclick = null;
+
+      if (!isMobile) {
+        el.addEventListener("mouseenter", function () {
+          infoSwiper.autoplay.stop();
+          infoSwiper.slideToLoop(i);
+
+          all.forEach(function (step, idx) {
+            step.classList.toggle("is-active", idx === i);
+            step.classList.toggle("is-inactive", idx !== i);
+            step.style.opacity = idx === i ? "1" : "0.6";
+          });
+        });
+
+        el.addEventListener("mouseleave", function () {
+          infoSwiper.autoplay.start();
+          all.forEach(function (step) {
+            step.style.opacity = "1";
+          });
+        });
+
+        el.addEventListener("click", function () {
+          infoSwiper.slideToLoop(i);
+        });
+      }
+    });
+  }
+  // 初始化
+  initInfoSwiper();
+  // RWD resize 時自動重建
+  window.addEventListener("resize", function () {
+    clearTimeout(window._resizeTimer);
+    window._resizeTimer = setTimeout(initInfoSwiper, 300);
+  });
+});
+// ===================================================================//
+
+
+
+
+// ======================攔截所有連結============================//
+$(document).on('click', 'a#pomp[target="_blank"]', function (e) {
+  var go = window.confirm('Dawho.tw提醒您\n您即將前往其他網站，是否繼續？');
+  if (!go) {
+    e.preventDefault();
+    return false;
+  }
+});
+// ===================================================================//

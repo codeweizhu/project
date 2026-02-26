@@ -1,0 +1,38 @@
+extends _layout.pug
+
+append vars
+
+block content
+
+  main.content
+    //- KV
+    include pages/_section-kv
+    //- input task
+    include pages/_section-task
+    //- info
+    include pages/_section-info
+    //- faq
+    include pages/_section-faq
+    //- notice
+    include pages/_section-notice
+
+    //- nav btn
+    //- 1440px的小老虎
+    a.side-btn(href="https://applydawho.sinopac.com/OpenAccount/OpenAccount", target="_blank", rel="noopener")
+      span 點我申請
+
+    //- 768px以下時改顯示底部按鈕
+    a.side-btn-mobile(href="https://applydawho.sinopac.com/OpenAccount/OpenAccount", target="_blank", rel="noopener") 我要當DAWHO
+      img(src="images/white-arrow.svg", alt="白色箭頭")
+      //- .side-btn-mobile__wrapper
+      //-   table.side-btn-table
+      //-     tr
+      //-       td
+      //-         a(href="https://applydawho.sinopac.com/OpenAccount/OpenAccount", target="_blank", rel="noopener") 馬上開戶
+      //-       td
+      //-         a(href="https://apply.sinopac.com/PersonalLoans/PersonalLoans/Index?LinkSource=369&refid=DAWHOLOAN", target="_blank", rel="noopener") 點我申請
+
+append lightbox
+  include _lightbox.pug
+
+append script

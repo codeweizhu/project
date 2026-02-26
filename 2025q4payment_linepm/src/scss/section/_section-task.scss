@@ -1,0 +1,549 @@
+.section-task {
+  width: 100%;
+  height: auto;
+  background-color: #3F4B47;
+  position: relative;
+  overflow: hidden;
+  // 背景月亮
+  .bg-ellipse {
+    position: absolute;
+    z-index: 0;
+    &img {
+      width: 100%;
+      height: 100%;
+    }
+
+    &__L {
+      width: 961px;
+      height: 961px;
+    }
+
+    &__S {
+      width: 635.33px;
+      height: 635.33px;
+      transform: rotate(140.32deg);
+    }
+
+    &--left {
+      top: -200px;
+      right: calc(50% + 229px);
+    }
+
+    &--right {
+      bottom: 6.74px;
+      left: calc(50% + 314.86px);
+    }
+  }
+  &__wrapper {
+    padding: 100px 20px;
+    max-width: 1240px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    @include breakpoint(lg){
+      padding: vw1279(100px) vw1279(20px);
+      max-width: vw1279(1240px);
+    }
+    @include breakpoint(sm) {
+      padding-bottom: vwm(90px);
+    }
+  }
+}
+
+// br
+.task-mobile {
+  display: none;
+  @include breakpoint(sm) {
+    display: block;
+    line-height: 0;
+  }
+}
+
+.task-title {
+  font-size: 50px;
+  font-weight: bold;
+  line-height: 1.25;
+  color: #F5EFE6;
+  margin-bottom: 32px;
+  text-align: center;
+  @include breakpoint(lg){
+    font-size: vw1279(50px);
+    margin-bottom: vw1279(32px);
+  }
+  @include breakpoint(sm) {
+    font-size: vwm(62px);
+    margin-bottom: vwm(60px);
+  }
+}
+
+.task-content {
+  width: 100%;
+  height: auto;
+  display: flex;
+  margin-bottom: 60px;
+  @include breakpoint(sm) {
+    flex-direction: column;
+    margin-bottom: vwm(76px);
+  }
+  @include breakpoint(sm) {
+    flex-direction: column;
+    margin-bottom: vwm(76px);
+  }
+  &__card-container {
+    flex: 1;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+  }
+  &__card {
+    width: 100%;
+    height: auto;
+    min-height: 210px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    border-radius: 20px;
+    background: linear-gradient(
+      304.91deg,
+      rgba(255, 255, 255, 0.03) 10%,
+      rgba(255, 255, 255, 0.15) 30%,
+      rgba(255, 255, 255, 0.03) 60%
+    );
+    backdrop-filter: blur(6px);
+    @include breakpoint(lg){
+      min-height: vw1279(210px);
+      border-radius: vw1279(20px);
+    }
+    @include breakpoint(sm) {
+      border-radius: vwm(40px);
+    }
+    &:last-child {
+      margin-top: 20px;
+      @include breakpoint(sm){
+        margin-top: vwm(40px);
+      }
+    }
+    //- 漸層邊框
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(
+        304.91deg,
+        #ffffff 0%,
+        rgba(255, 255, 255, 0) 50%,
+        #ffffff 100%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      pointer-events: none;
+    }
+  }
+  &__content {
+    margin-top: 32px;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-align: center;
+    color: #fff;
+    @include breakpoint(lg) {
+      font-size: vw1279(32px);
+      margin-top: vw1279(32px);
+    }
+    @include breakpoint(sm) {
+      margin: vwm(60px) 0 vwm(30px);
+      font-size: vwm(45px);
+    }
+  }
+  &__text {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.6;
+    letter-spacing: 0;
+    color: #FDF9C7;
+    font-family: "Roboto";
+    @include breakpoint(lg) {
+      font-size: vw1279(32px);
+    }
+    @include breakpoint(sm) {
+      font-size: vwm(66px);
+      line-height: 1.1;
+      margin-bottom: vwm(54px);
+    }
+    &--highlight {
+      font-size: 48px;
+      @include breakpoint(lg){
+        font-size: vw1279(48px);
+      }
+      @include breakpoint(sm){
+        font-size: vwm(90px);
+      }
+    }
+    &--mt {
+      margin-bottom: -20px;
+      @include breakpoint(lg){
+        margin-bottom: vw1279(-20px);
+      }
+      @include breakpoint(sm){
+        margin-bottom: 0;
+      }
+    }
+  }
+  &__num {
+    position: absolute;
+    font-weight: 200;
+    font-size: 100px;
+    line-height: 0.7;
+    opacity: 0.2;
+    bottom: 0;
+    left: 24px;
+    color: #fff;
+    @include breakpoint(lg) {
+      font-size: vw1279(100px);
+      left: vw1279(24px);
+    }
+    @include breakpoint(sm) {
+      font-size: vwm(190px);
+      left: vwm(45px);
+    }
+  }
+  &__icon {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    width: 120px;
+    height: auto;
+    @include breakpoint(lg) {
+      width: vw1279(120px);
+      right: vw1279(10px);
+    }
+    @include breakpoint(sm) {
+      right: vwm(10px);
+      width: vwm(190px);
+    }
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  #form {
+    flex: 1;
+    margin-left: 60px;
+    font-family: "Noto Sans TC";
+    position: relative;
+    padding: 16px;
+    @include breakpoint(lg){
+      margin-left: vw1279(60px);
+      padding: vw1279(16px);
+    }
+    @include breakpoint(sm){
+      margin-top: vwm(60px);
+      margin-left: 0;
+      padding: vwm(16px);
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 20;
+      border-radius: 16px;
+      left: 0;
+      top: 0;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      background: url(../images/event-end.png?v=20260121);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      width: 250px;
+      height: 190px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 21;
+      @include breakpoint(lg){
+        width: vw1279(250px);
+        height: vw1279(190px);
+      }
+      @include breakpoint(sm){
+        width: vwm(440px);
+        height: vwm(340px);
+      }
+    }
+  }
+}
+
+
+// form 欄位樣式
+.form {
+  &__group {
+    margin-bottom: 10px;
+    @include breakpoint(lg){
+      margin-bottom: vw1279(10px);
+    }
+    @include breakpoint(sm) {
+      margin-bottom: vwm(20px);
+    }
+  }
+  &__errorMessage {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 10px;
+    color: #FDF9C7;
+    @include breakpoint(lg){
+      margin-top: vw1279(10px);
+      font-size: vw1279(24px);
+    }
+    &.hidden {
+      display: none;
+    }
+  }
+  &__label {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+    @include breakpoint(lg) {
+      font-size: vw1279(24px);
+      margin-bottom: vw1279(10px);
+    }
+    @include breakpoint(sm) {
+      font-size: vwm(45px);
+      margin-bottom: vwm(20px);
+    }
+  }
+  &__input {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid $primary-color-6;
+    padding: 15px 24px;
+    font-size: 24px;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    @include breakpoint(lg) {
+      border-radius: vw1279(4px);
+      font-size: vw1279(24px);
+      padding: vw1279(15px) vw1279(24px);
+    }
+    @include breakpoint(sm) {
+      padding: vwm(34px) vwm(30px);
+      font-size: vwm(38px);
+    }
+
+    &.captcha {
+      width: 290px;
+      @include breakpoint(lg){
+        width: vw1279(290px);
+      }
+      @include breakpoint(sm) {
+        width: 100%;
+      }
+    }
+
+    &.errorMessage {
+      border-color: #ED1C24 !important;
+    }
+
+    &:hover,
+    &:focus {
+      border: 1px solid #048961;
+    }
+
+    // 進入焦點placeholder隱藏
+    &:focus {
+      &::placeholder {
+        color: transparent; // 讓 placeholder 看不見
+      }
+    }
+  }
+  // 驗證區塊
+  &__captcha {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    @include breakpoint(sm) {
+      flex-direction: column;
+      align-items:unset;
+    }
+    &--img {
+      width: 180px;
+      height: 60px;
+      margin: 0 12px;
+      @include breakpoint(lg){
+        width: vw1279(180px);
+        height: vw1279(60px);
+        margin: 0 vw1279(12px);
+      }
+      @include breakpoint(sm) {
+        width: vwm(240px);
+        height: vwm(90px);
+        margin: 0 vwm(20px) 0 0;
+      }
+    }
+
+    &--reload {
+      all: unset;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      @include breakpoint(lg){
+        width: vw1279(50px);
+        height: vw1279(50px);
+      }
+      @include breakpoint(sm) {
+        width: vwm(80px);
+        height: vwm(80px);
+      }
+    }
+  }
+  &__box {
+    display: flex;
+    align-items: center;
+    @include breakpoint(sm) {
+      margin-top: vwm(20px);
+    }
+  }
+  // 確定條款區
+  &__check {
+    display: flex;
+    // gap: 16px;
+    align-items: flex-start;
+    padding-top: 10px;
+
+    @include breakpoint(sm) {
+      // gap: vwm(30px);
+      // margin-right: vwm(30px);
+    }
+
+    input[type="checkbox"] {
+      // 隱藏原始樣式（但保留可點擊區）
+      appearance: none;       // 移除預設樣式
+      -webkit-appearance: none;
+      width: 30px;
+      height: 30px;
+      border: 1px solid $primary-color-6;  // 自訂邊框顏色
+      background-color: white;
+      border-radius: 4px;         // 可改圓角 / 方角
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+      @include breakpoint(lg){
+        width: vw1279(40px);
+        height: vw1279(40px);
+      }
+      @include breakpoint(sm) {
+        width: vwm(60px);
+        height: vwm(60px);
+      }
+
+      &:checked {
+        background-color: $primary-color-6;  // ✅ 勾選後背景色
+        border-color: #048961;
+      }
+
+      // 用偽元素加上「打勾圖示」
+      &:checked::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        background-image: url("../images/task/check.svg");
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &--text {
+      font-size: 20px;
+      line-height: 1.5;
+      letter-spacing: 0.05em;
+      font-weight: 400;
+      text-align: justify;
+      // padding-right: 6px;
+      margin-left: 8px;
+      @include breakpoint(lg) {
+        font-size: vw1279(24px);
+        margin-left: vw1279(8px);
+      }
+      @include breakpoint(sm) {
+        font-size: vwm(34px);
+        margin-left: vwm(30px);
+      }
+
+      &-link {
+        // color: white;
+        color: #FDF9C7;
+        text-decoration: underline;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+// 資料送出按鈕
+.task-send-btn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  border-radius: 999px;
+  border: 1px solid #DFC78F ;
+  padding: 16px 50px 16px 60px;
+  color: #DFC78F;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  background: transparent;
+  @include breakpoint(lg){
+    border-radius: vw1279(999px);
+    padding:  vw1279(16px) vw1279(50px);
+    font-size: vw1279(36px);
+  }
+  @include breakpoint(sm) {
+    padding: vwm(30px) vwm(100px);
+    font-size: vwm(45px);
+  }
+  &::after {
+    content: "";
+    display: flex;
+    width: 24px;
+    height: 24px;
+    margin-left: 8px;
+    background-image: url("../images/task/send-arrow.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include breakpoint(sm) {
+      width: vwm(42px);
+      height: vwm(42px);
+      margin-left: vwm(15px);
+    }
+  }
+  &:hover {
+    background-color: #CEB071;
+    color: white;
+
+    &::after {
+      background-image: url("../images/task/send-arrow-white.svg");
+    }
+  }
+}

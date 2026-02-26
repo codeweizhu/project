@@ -1,0 +1,97 @@
+//-table
+.intro-table {
+  font-size: 24px;
+  width: 100%;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  @include breakpoint(lg) {
+    font-size: vw(24px);
+  }
+  @include b768 {
+    font-size: vwm(28px);
+  }
+  .txt-small {
+    display: block;
+    font-size: 18px;
+    color: #000;
+    margin-top: 8px;
+    @include breakpoint(lg){
+      font-size: vw(20px);
+      margin-top: vw(8px)
+    }
+    @include breakpoint(sm){
+      font-size: vwm(22px);
+      margin-top: vwm(8px)
+    }
+  }
+}
+.intro-table td,
+.intro-table th {
+  vertical-align: middle;
+  padding: 24px 0;
+  border: 2px solid #fff;
+  line-height: 1.2;
+  @include breakpoint(sm){
+    padding: vwm(16px);
+    font-size: vwm(29px);
+  }
+}
+.intro-table td:first-child,
+.intro-table th:first-child {
+  border-left: 0;
+}
+.intro-table td:last-child,
+.intro-table th:last-child {
+  border-right: 0;
+}
+.intro-table tr:first-child td,
+.intro-table tr:first-child th {
+  border-top: 0;
+}
+.intro-table tr:last-child td,
+.intro-table tr:last-child th {
+  border-bottom: 0;
+}
+.intro-table th {
+  background-color: #ffe39a;
+  color: #1a1a1a;
+  font-size: 28px;
+  letter-spacing: 0.2em;
+  @include breakpoint(lg) {
+    font-size: vw(28px);
+  }
+  @include b768 {
+    font-size: vwm(29px);
+  }
+}
+.intro-table th em {
+  font-size: 0.66667em;
+  display: block;
+}
+.intro-table td {
+  background-color: #f2f2f2;
+}
+.intro-table td[rowspan='2'] {
+  border-bottom: 0;
+}
+.intro-table td > span {
+  display: inline-block;
+}
+.intro-table tfoot td {
+  color: #3a3a3a;
+  background-color: #ffe39a;
+  text-align: left;
+  padding-left: 1em;
+  padding-right: 1em;
+  font-size: 20px;
+  // font-size: 0.54167em;
+  line-height: 1.5;
+  @include breakpoint(lg) {
+    font-size: vw(20px);
+  }
+  @include b768 {
+    font-size: vwm(29px);
+  }
+}
+
+

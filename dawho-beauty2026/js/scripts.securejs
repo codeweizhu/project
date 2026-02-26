@@ -1,0 +1,342 @@
+'use strict';
+
+$(document).ready(function () {
+
+  // Loading
+  $(window).on("load", function () {
+    $.Window = $(window);
+    $.Body = $('body');
+    $('body').css('visibility', 'visible');
+    $(".loader").delay(500).fadeOut("slow", function () {
+      $("#overlayer").fadeOut("slow", function () {
+        showLightboxIfNeeded();
+      });
+    });
+  });
+
+  // Lightbox
+  function showLightboxIfNeeded() {
+    var now = Math.floor(Date.now() / 1000);
+    // 設定公告時間 2026/3/31生效
+    var announceEndTime = new Date("2026/03/31 23:59:59").getTime() / 1000;
+
+    // 超過公告時間 → 顯示彈窗
+    if (now >= announceEndTime) {
+      $('.lboxed').lightbox_me({
+        centered: true,
+        onLoad: function () {},
+        overlayCSS: {
+          background: 'black',
+          opacity: 0.8,
+        }
+      });
+    }
+  }
+
+  // 關閉按鈕
+  $(".lboxed .close_x").on("click", function (e) {
+    $(".lb_overlay").css({ display: "none" });
+    $(".lboxed").css({ display: "none" });
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function scrollAnim() {
+	var pageTop = $(document).scrollTop();
+	var pageBottom = pageTop + $(window).height();
+	var tags = $(".js-animate");
+	var activeOffset = 30;
+	tags.each(function (index) {
+		if ($(this).offset().top < pageBottom - activeOffset) {
+			$(this).addClass("js-animate--active");
+		} else {
+			$(this).removeClass("js-animate--active");
+		}
+	});
+}
+scrollAnim(); // init
+$(document).on("scroll", scrollAnim);
+
+
+//錨點
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href').substring(1);
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      const headerOffset = 130;
+      const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - headerOffset,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+
+
+//nav
+$("#header a.header-sec-link").on("click", function () {
+  $("#header-toggle").removeClass("toggled");
+  $("#header nav").removeClass("toggled");
+});
+$("#header-toggle").on("click", function () {
+  $(this).toggleClass("toggled");
+  $("nav").toggleClass("toggled");
+});
+
+
+
+// ========== Step Slider  ==========
+$(window).on('load', function () {
+  const $slider = $('#slide .slider');
+  const $steps = $('#slide .list__item');
+  const $imgs = $slider.find('img');
+  let loadedCount = 0;
+  //-Active樣式切換邏輯
+  function activateStep(index) {
+    $steps.removeClass('active').eq(index).addClass('active');
+  }
+  //-綁定輪播與點擊行為
+  function bindEvents() {
+    $slider.on('afterChange', function (event, slick, currentSlide) {
+      activateStep(currentSlide);
+    });
+    $steps.each(function (index) {
+      $(this).on('mousedown', function () {
+        $steps.removeClass('active');       // 立即切換active
+        $(this).addClass('active');
+        $slider.slick('slickGoTo', index);  // 切換到對應slide
+      });
+    });
+  }
+  //-初始化 Slick 輪播
+  function initSlider() {
+    if ($slider.hasClass('slick-initialized')) return;
+    $slider.slick({
+      dots: true,
+      infinite: true,
+      arrows: false,
+      speed: 300,
+      slidesToShow: 1,
+      autoplay: true,
+      autoplaySpeed: 2500,
+      adaptiveHeight: false
+    });
+    bindEvents();
+  }
+  //-檢查圖片是否全部載入
+  function checkIfAllImagesLoaded() {
+    if (loadedCount >= $imgs.length) {
+      initSlider();
+    }
+  }
+  //-圖片載入偵測
+  $imgs.each(function () {
+    if (this.complete && this.naturalHeight > 0) {
+      loadedCount++;
+    } else {
+      $(this).on('load error', function () {
+        loadedCount++;
+        checkIfAllImagesLoaded();
+      });
+    }
+  });
+  checkIfAllImagesLoaded();
+});
+// =================================
+
+
+
+//常見問題
+$('.sec3__problem').click(function () {
+  const $box = $(this).closest('.sec3__box');
+  const $ans = $box.find('.sec3__answer');
+  $('.sec3__answer').not($ans).slideUp();
+  $('.sec3__problem').not(this).removeClass('is-open');
+  $(this).toggleClass('is-open');
+  $ans.slideToggle();
+});
+
+
+//注意事項
+$('.sec3__notice__toggle').on('click', function (event) {
+  event.preventDefault();
+  $('.notice').toggleClass('sec3__notice--active');
+  $(this).siblings('.sec3__notice__content').slideToggle();
+  $(this).toggleClass('is-open');
+  // $('html, body').animate({
+  //   scrollTop: $('.section__notice').offset().top
+  // }, 300);
+});
+
+
+
+
+//star
+const stars = [
+  ".sec2__star1",
+  ".sec2__star2",
+  ".sec2__star3",
+  ".sec2__star4",
+  ".sec2__star5"
+];
+stars.forEach((selector, i) => {
+  gsap.fromTo(selector,
+    { opacity: 0 },
+    {
+      opacity: 1,
+      duration: 1,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut",
+      delay: i * 0.3
+    }
+  );
+});
+
+//kv
+document.addEventListener("DOMContentLoaded", () => {
+  let tl = gsap.timeline({ delay: 1 });
+
+  tl.from(".sec1__screen", {
+    opacity: 0,
+    y: -300,
+    duration: 0.8,
+    ease: "power3.out",
+  }, "-=0.4")
+  .from(".sec1__circleUS", {
+    opacity: 0,
+    y: -100,
+    duration: 0.8,
+    ease: "power3.out",
+  }, "-=0.3")
+  .from(".sec1__circleCNY", {
+    opacity: 0,
+    y: -100,
+    duration: 0.8,
+    ease: "power3.out",
+  }, "-=0.6")
+  .from(".sec1__title1", {
+    opacity: 0,
+    y: -100,
+    duration: 0.8,
+    ease: "power3.out",
+  }, "-=0.6")
+  .from(".sec1__title2", {
+    opacity: 0,
+    y: -100,
+    duration: 0.8,
+    ease: "power3.out",
+  }, "-=0.5")
+  .from(".sec1__title3", {
+    opacity: 0,
+    y: -100,
+    duration: 0.8,
+    ease: "power3.out",
+  }, "-=0.5")
+  .from(".sec1__desc", {
+    opacity: 0,
+    y: 100,
+    duration: 0.8,
+    ease: "power3.out",
+  }, "-=0.4")
+  .add(floating, "-=1");
+});
+
+//float
+function floating() {
+  const floatTargets = document.querySelectorAll('.sec1__circle');
+  floatTargets.forEach((el, i) => {
+    // 初始設定
+    gsap.set(el, {
+      y: 300,
+      opacity: 0,
+    });
+
+    const tl = gsap.timeline({
+      delay: 0.1 * i,
+      onComplete: () => {
+        // 第二段：浮動動畫
+        const duration = gsap.utils.random(4, 7);
+        const x = gsap.utils.random(-20, 20);
+        const y = gsap.utils.random(-30, -10);
+        const rotate = gsap.utils.random(-5, 5);
+        gsap.to(el, {
+          x,
+          y,
+          rotation: rotate,
+          duration,
+          ease: "sine.inOut",
+          repeat: -1,
+          yoyo: true,
+          delay: 0.2 * i,
+        });
+      }
+    });
+
+    tl.to(el, {
+      y: 35,
+      duration: 0.8,
+      ease: "power2.out",
+    });
+
+    tl.to(el, {
+      y: 0,
+      opacity: 1,
+      duration: 0.7,
+      ease: "power2.out",
+    });
+  });
+}
+
+
+$(window).on('scroll', function () {
+
+  var $nav = $('.nav');
+  var $notice = $('[data-id="changeBtn"]');
+  var isMoved = !$nav.parent().hasClass('wrapper');
+  var noticeTop = $notice[0].getBoundingClientRect().top;
+  var windowHeight = window.innerHeight;
+
+  if (window.innerWidth > 768) {
+    if (!$nav.parent().hasClass('wrapper')) {
+      $nav.removeClass('is-static');
+      $('.wrapper').append($nav);
+    }
+    return;
+  }
+  //當 notice 進入視窗下方 100px 內時觸發插入
+  if (noticeTop < windowHeight && !isMoved) {
+    $nav.addClass('is-static');
+    $nav.detach().insertAfter($notice);
+  }
+  //若 notice 尚未進入視窗（或已經離開畫面上方）則還原
+  if (noticeTop >= windowHeight && isMoved) {
+    $nav.removeClass('is-static');
+    $('.wrapper').append($nav);
+  }
+});
+$(window).trigger('scroll');
+
+
+
+
+

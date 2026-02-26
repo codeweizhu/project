@@ -1,0 +1,186 @@
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video {margin: 0;padding: 0;border: 0;font: inherit;vertical-align: baseline}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,main {display: block}
+
+body {line-height: 1}
+ol,ul {list-style: none}
+
+ol li{
+  .number{
+    list-style: none; /* 移除預設編號 */
+    counter-reset: my-counter; /* 設定計數器 */
+  }
+  .number li {
+    counter-increment: my-counter; /* 計數器遞增 */
+  }
+  .number li::before {
+    content: "(" counter(my-counter) "). "; /* 自訂編號格式 (1). */
+    
+  }
+}
+
+img {
+  border: 0;
+  margin: 0;
+  vertical-align: middle;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+blockquote,q {quotes: none}
+
+blockquote:after,blockquote:before,q:after,q:before {content: '';content: none}
+
+table {border-collapse: collapse;border-spacing: 0}
+
+input,select {vertical-align: middle;}
+
+input,textarea,button,select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+html {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  // 改寫iOS Safari中可點擊元素的高亮顏色
+  font-size: initial;
+  scroll-behavior: smooth;
+  scroll-padding-top: 3em;
+}
+
+input,button,select,textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+button {
+  border: none;
+}
+
+a:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+// 去除focus outline-chrome預設
+a:focus,input:focus,select:focus,textarea:focus,button:focus {
+  outline: 0;
+}
+
+form {
+  width: 100%;
+}
+
+fieldset {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+legend {
+  display: none;
+  padding: 0;
+  line-height: inherit;
+  color: #333;
+  overflow: hidden;
+  width: 100%;
+}
+
+label {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+  margin-bottom: 3px;
+  font-weight: bold;
+}
+
+// 隱藏小箭頭
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="search"] {
+  -webkit-appearance: none;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin-top: 1px \9;
+  line-height: normal;
+  vertical-align: baseline;
+}
+
+input[type="radio"] {
+  -webkit-appearance: radio;
+  border-radius: 50%;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: checkbox;
+}
+
+input[type="file"] {
+  display: block;
+}
+
+input[type="range"] {
+  display: block;
+  width: 100%;
+}
+
+// file、radio、checkbox的focus設定
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+// placeholder
+::-webkit-input-placeholder {
+  color: #aaa;
+}
+
+:-moz-placeholder {
+  color: #aaa;
+}
+
+::-moz-placeholder {
+  color: #aaa;
+}
+
+:-ms-input-placeholder {
+  color: #aaa !important;
+}
+
+::placeholder {
+  color: #aaa;
+}
+
+* {
+  box-sizing: border-box;
+
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
+}

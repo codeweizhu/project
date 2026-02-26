@@ -1,0 +1,154 @@
+#header {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  margin: auto;
+  background-color: #181818;
+  border-bottom: 1px solid transparent;
+  border-color: #CEB071;
+  top: 0;
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 75px;
+    padding: 10px 8px;
+    max-width: 1280px;
+    width: 100%;
+    @include b1279 {
+      justify-content: center !important;
+      height: 65px;
+    }
+    &__link {
+      display: inline-flex;
+      font-size: 18px;
+      @include breakpoint(lg){
+        display: none;
+        &.toggled {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          top: 66px;
+          left: 0;
+          background-color: #292929;
+          height: auto;
+          width: 100%;
+          font-size: 20px;
+          font-weight: 500;
+          padding: 20px 0;
+          &::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+          }
+        }
+      }
+      li {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        a {
+          display: inline-flex;
+          justify-content: center;
+          color: #CEB071;
+          text-wrap: nowrap;
+          width: 149px;
+          padding: 14px 0;
+          font-weight: 500;
+          @include b1279 {
+            width: 100%;
+          }
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: -10px;
+          left: 0;
+          margin: auto;
+          transition: 0.4s;
+          color: #fff;
+          width: 0px;
+          height: 4px;
+          background-color: #CEB071;
+          @include b1279 {
+          }
+        }
+        &:hover {
+          &::after {
+            width: 100%;
+            @include b1279 {
+              width: 0;
+            }
+          }
+
+        }
+      }
+    }
+    &__btn {
+      margin-left: 20px;
+      &:hover {
+        &::after {
+          width: 0 !important;
+        }
+      }
+    }
+    // button 閃光特效
+    .bling-button {
+      color: black !important;
+      border-radius: 100px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      position: relative;
+      overflow: hidden;
+      font-size: 20px;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      background-color: #CEB071;
+      width: 184px !important;
+      @include b1279 {
+        padding: 12px 0;
+        margin: 10px 0 20px;
+      }
+      &::before {
+        position: absolute;
+        top: -40%;
+        right: 110%;
+        transform: rotate(17deg);
+        background: linear-gradient(
+          to right,
+          rgba(253, 249, 199, 0) 0%,
+          rgba(253, 249, 199, 0.5) 50%,
+          rgba(253, 249, 199, 0.5) 55%,
+          rgba(253, 249, 199, 0) 100%
+        );
+        width: 60%;
+        height: 200%;
+        content: "";
+        animation: shine-move 2s infinite linear;
+      }
+    }
+    #header-toggle {
+      display: none;
+      @include b1279 {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        left: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-image: url(../images/icon_hambuger_open.svg);
+      }
+      &.toggled {
+        background-image: url(../images/icon_hambuger_close.svg);
+      }
+    }
+  }
+}

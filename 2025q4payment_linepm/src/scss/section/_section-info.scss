@@ -1,0 +1,309 @@
+.section-info {
+  width: 100%;
+  height: auto;
+  background: #F5EFE6 url(../images/info/bg_info.png) no-repeat center top;
+  background-size: 2560px auto;
+  @include breakpoint(sm){
+    background: #F5EFE6;
+  }
+  &__wrapper {
+    padding: 100px 20px;
+    @include breakpoint(lg){
+      padding: vw1279(100px) vw1279(20px);
+    }
+    @include breakpoint(sm){
+      padding: vwm(100px) 0;
+    }
+  }
+}
+
+.info-carousel {
+  max-width: 1280px;
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+  background-color: #CC7B5F;
+  margin: 0 auto;
+  padding: 80px;
+  color: white;
+  @include breakpoint(lg){
+    max-width: vw1279(1280px);
+    border-radius: vw1279(30px);
+    padding: vw1279(80px);
+  }
+  @include breakpoint(sm){
+    background: none;
+    padding: 0;
+  }
+  &-slide{
+    &__step {
+      @include breakpoint(sm) {
+        font-weight: bold;
+        text-align: center;
+        margin-top: vwm(40px);
+      }
+    }
+    &__step-title {
+      display: none;
+      @include breakpoint(sm){
+        display: block !important;
+        font-size: vwm(48px);
+        line-height: 1;
+      }
+    }
+    &__step-text {
+      display: none;
+      @include breakpoint(sm){
+        display: block !important;
+        font-size: vwm(32px);
+        text-wrap: nowrap;
+        line-height: 1;
+        margin-top: vwm(20px);
+      }
+    }
+    &__img {
+        border-radius: vwm(40px);
+        cursor: auto;
+        width: 100%;
+        // height: auto;
+        // aspect-ratio: 30 / 35;
+        background-color: #F6EFE5;
+        display: flex;
+        overflow: hidden;
+        // margin-bottom: vwm(40px);
+        aspect-ratio: 6 / 7;
+    }
+  }
+  &__title {
+    font-size: 50px;
+    font-weight: bold;
+    line-height: 1.25;
+    text-align: center;
+    margin-bottom: 40px;
+    // font-family: "Roboto";
+    @include breakpoint(lg){
+      font-size: vw1279(50px);
+      margin-bottom: vw1279(40px);
+    }
+    @include breakpoint(sm){
+      display: none;
+    }
+    &.is-mobile {
+      display: none;
+      @include breakpoint(sm){
+        display: block;
+        color: #5A4E4C;
+        font-size: vwm(62px);
+        margin-bottom: vwm(60px);
+      }
+    }
+
+  }
+  &__carousel {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    margin: auto;
+    overflow: hidden;
+    height: auto;
+    @include breakpoint(sm){
+      flex-direction: column;
+      align-items: center;
+      height: auto;
+    }
+  }
+  //- 步驟區塊
+  &__steps {
+    max-width: 456px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // gap: 20px;
+    flex: 1;
+    @include breakpoint(lg){
+      max-width: vw1279(456px);
+      margin-right: vw1279(40px);
+    }
+    @include breakpoint(sm){
+      display: none;
+    }
+  }
+  //- 步驟項目
+  &__step {
+    color: #F6EFE5;
+    position: relative;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    border-bottom: 1px solid white;
+    padding: 20px 0;
+    @include breakpoint(lg){
+      padding: vw1279(20px) 0;
+    }
+    @include breakpoint(sm){
+      background: none;
+      border-radius: vwm(40px);
+      padding: 0;
+    }
+    &-label {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-family: "Manrope", sans-serif;
+      font-weight: bold;
+      margin-bottom: 12px;
+      font-size: 16px;
+      line-height: 1.4;
+      letter-spacing: 0.04em;
+      @include breakpoint(lg){
+        margin-bottom: vw1279(12px);
+      }
+    }
+
+    &-title {
+      color: $white;
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: 0.02em;
+      text-transform: capitalize;
+      @include breakpoint(lg){
+        font-size: vw1279(36px);
+      }
+    }
+
+    &-text {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: 0px;
+      margin-top: 20px;
+      @include breakpoint(lg){
+        font-size: vw1279(24px);
+        margin-top: vw1279(20px);
+      }
+    }
+    //- 輪播步驟進度條
+    &__progress {
+      transform-origin: left;
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+    }
+
+    &.is-active .info-carousel__step__progress {
+      background-color: $white;
+      animation: 5s linear progressLine;
+    }
+    &:hover .info-carousel__step__progress {
+      animation-play-state: paused;
+    }
+  }
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  &__image {
+    margin: 0 auto;
+    width: 355px;
+    padding-top: 68px;
+    object-fit: cover;
+    object-position: center top;
+    @include breakpoint(lg){
+      width: vw1279(355px);
+      padding-top: vw1279(68px);
+    }
+    @include breakpoint(sm){
+      width: 63%;
+    }
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  //- 輪播區塊
+  &__swiper {
+    max-width: 600px;
+    flex: 1;
+    padding-bottom: 64px;
+    @include breakpoint(lg){
+      max-width: vw1279(600px);
+      padding-bottom: 4em; /**/
+    }
+    @include breakpoint(sm){
+      max-width: 100%;
+      padding-bottom: 0;
+    }
+    .swiper-slide {
+      border-radius: 30px;
+      cursor: auto;
+      max-width: 600px;
+      height: 660px;
+      min-height: 700px;
+      background-color: #F6EFE5;
+      display: flex;
+      overflow: hidden;
+      @include breakpoint(lg){
+        border-radius: vw1279(30px);
+        max-width: vw1279(600px);
+        height: vw1279(660px);
+        // min-height: vw1279(700px);
+        min-height: vw1279(680px);
+        // outline: 1px solid red;
+      }
+      @include breakpoint(sm){
+        background-color: #CC7B5F;
+        border-radius: vwm(40px);
+        height: auto;
+        padding: vwm(50px) vwm(65px) vwm(128px) vwm(65px);
+        max-width: 91%;
+      }
+    }
+  }
+  &__pagination {
+    margin-top: 45px;
+    text-align: center;
+    @include breakpoint(lg){
+      margin-top: vw1279(45px);
+    }
+    @include breakpoint(sm){
+      display: none;
+    }
+    &.is-mobile {
+      display: none;
+      @include breakpoint(sm){
+        display: block;
+        bottom: vwm(40px) !important;
+      }
+    }
+  }
+
+
+
+  //- Pagination Bullets 客製
+  .swiper-pagination-bullet {
+    background: #EDD2BB;
+    width: 8px;
+    height: 8px;
+    margin: 0 8px !important;
+    opacity: 1;
+    @include breakpoint(sm){
+      background: #EDD2BB;
+      width: vwm(20px);
+      height: vwm(20px);
+      margin: 0 vwm(20px) !important;
+      opacity: 1;
+    }
+    &-active {
+      background: #333;
+    }
+  }
+  .swiper-pagination-horizontal.swiper-pagination-bullets {
+    bottom: auto;
+  }
+}

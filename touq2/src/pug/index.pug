@@ -1,0 +1,295 @@
+extends _layout.pug
+
+block append head
+  //-Basecode
+  script(async src="https://www.googletagmanager.com/gtag/js?id=AW-663699674")
+  script.
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config','AW-663699674');
+  //-Basecode end
+  script.
+    $(document).ready(function(){
+      $('.mediabtn').click(function () {
+        gtag('event', 'conversion', {'send_to': 'AW-663699674/mBPdCJe0vawaENqBvbwC'});
+      });
+    })
+
+
+
+
+block content
+  section.main
+
+    .wrapper
+      img.wrapper__circuit.circuit1(src="./img/kv/img_circuit-bg_1.png", alt="")
+      img.wrapper__circuit.circuit2(src="./img/kv/img_circuit-bg_2.png", alt="")
+
+      //-主視覺
+      .wrapper__container
+        img.wrapper__kv#kv-img(src="./img/kv/kv.svg" alt="想當台積電股東?")
+        .wrapper__title
+          h1 抽台積電股票等值現金
+          img.title3#title3(src="./img/kv/kv_slogan3.svg" alt="即日起至2025/6/30")
+          img.title1#title1(src="./img/kv/kv_slogan.svg" alt="抽台積電股票等值現金")
+          img.title2#title2(src="./img/kv/kv_slogan2.svg", alt="新朋友專屬")
+
+    //- 新朋友首抽
+    .sec1
+      .sec1__wrapper
+        img.sec1__wrapper-1(src="./img/sec1/kv1-cirlce-left1.svg", alt="")
+        img.sec1__wrapper-2(src="./img/sec1/kv1-cirlce-left2.svg", alt="")
+        img.sec1__wrapper-3(src="./img/sec1/kv1-cirlce-right1.svg", alt="")
+        img.sec1__wrapper-4(src="./img/sec1/kv1-cirlce-right2.svg", alt="")
+        img.sec1__wrapper-5(src="./img/sec1/kv1-cirlce-right3.svg", alt="")
+        //-star
+        img.sec1__wrapper-6.star(src="./img/sec1/kv1-white-star.svg", alt="")
+        img.sec1__wrapper-7.star(src="./img/sec1/kv1-white-star.svg", alt="")
+        img.sec1__wrapper-8.star(src="./img/sec1/kv1-white-star.svg", alt="")
+        img.sec1__wrapper-9.star(src="./img/sec1/kv1-white-star.svg", alt="")
+
+      .sec1__container
+        #kv-scroll
+          div.scroll-text SCROLL DOWN
+          img.scroll-img(src="./img/icon_arrow2.svg", alt="")
+
+        .sec1__title.js-animate.js-animate--fadein#anchor-raffle
+          h2 新朋友首登抽台積電股票等值現金
+          img.kv1title1(src="./img/sec1/kv1_title.svg", alt="新朋友首登抽")
+
+        p.sec1__date.js-animate.js-animate--fadein.js-animate--delay200 2025/4/1-2025/6/30
+        .sec1__content.js-animate.js-animate--fadein-left
+          h3 台積電股票等值現金66股
+          img.sec1__cash(src="./img/sec1/kv1_cash.svg", alt="台積電股票等值現金66股")
+          div.sec1__warning
+            img(src="./img/popup/pop_i.svg", alt="")
+            span 以2025年4月1日台股市場之「2330-台積電」之股價收盤價計算66股之等值現金，獎項名額共10名。
+          div.sec1__join 如何參加抽獎
+
+          div.sec1__step
+            div.sec1__web
+              p.sec1__text STEP 1
+              img.sec1__stepimg(src="./img/sec1/kv1_web.png", alt="DAWHO | 大戶投")
+              p.sec1__desc 透過
+                span.fw-bold 本活動網頁一次申請
+                br
+                span 「DAWHO | 大戶投」
+            div.sec1__app
+              p.sec1__text STEP 2
+              img.sec1__stepimg(src="./img/sec1/kv1_app.png", alt="DAWHO APP")
+              p.sec1__desc 活動期間內完成
+                br
+                span 首次登入 DAWHO APP
+          div.sec1__info
+            //- img.sec1__infoimg(src="./img/sec1/kv1_gift.svg", alt="")
+            //- p.fz-20 2025/4/1-2025/4/30 完成步驟1
+            //-   br.br
+            //-   span 者可再
+            //-   span.fw-bold 享NT$200超商電子禮券
+            //-   br
+              a.underline(href="https://www.sinotrade.com.tw/ec/20250106/index.html?strProd=0174&strWeb=0549&utm_source=bank&utm_medium=button&utm_campaign=Q2DTOU&utm_term=nonpaid&utm_content=dawhoq2event" target="_blank") 此活動由永豐金證券舉辦，活動詳情請點
+                img(src="./img/sec1/kv1_arrow.svg", alt="")
+          a.sec1__button.mediabtn(href="https://applydawho.sinopac.com/OpenAccount/OpenAccount/Login/NewNew?strProd=0174&strWeb=0549&tickset=SIN020&tko=Q2DTOU" target="_blank") 立即當大戶
+            img(src="./img/sec1/kv1_arrow2.svg", alt="")
+        p.sec1__date.sec1__date--line.fc-gray.js-animate.js-animate--fadein-down.js-animate--delay600 新朋友專屬
+
+        .sec1__title.js-animate.js-animate--fadein#anchor-level
+          h2 新朋友專屬！每月大戶等級最高再拿NT$600
+          img.kv1title2(src="./img/sec1/kv1_title2.svg", alt="每月最高再拿NT$600")
+          img.kv1title2_m(src="./img/sec1/kv1_title2_m.svg", alt="每月最高再拿NT$600")
+        p.sec1__date.js-animate.js-animate--fadein.js-animate--delay200 2025/1/1-2025/6/30
+        p.sec1__date.sec1__date--mt.js-animate.js-animate--fadein.js-animate--delay400 大戶等級
+
+
+          a.sec1__link.dawho-app-link(href="#")
+            img(src="./img/sec1/kv1_i.svg", alt="")
+          span 享
+
+        //-輪播
+        .sec1__level.splide#mysplide.js-animate.js-animate--fadein-left
+          .splide__arrows
+            button.splide__arrow.splide__arrow--prev
+              img(src="./img/sec1/kv1_arrow4.svg" alt="")
+            button.splide__arrow.splide__arrow--next
+              img(src="./img/sec1/kv1_arrow3.svg" alt="")
+          .splide__track
+            ul.splide__list
+              li.splide__slide
+                .sec1__box
+                  img(src="./img/sec1/kv1_spending.svg", alt="國內一般消費回饋NT$300")
+                  h3.sec1__credit DAWHO 多幣 Debit卡
+                    br
+                    | 國內一般消費加碼9.4%
+                  p.sec1__creditinfo.sec1__creditinfo--mb 大戶等級每月帳單
+                    br
+                    | 加碼9.4%回饋上限NT$300/月
+                  a.sec1__button.sec1__button--link.underline(href="https://dawho.tw/about/debitcard/?strProd=0174&strWeb=0549&tickset=SIN020&tko=Q2DTOU" target="_blank") 詳情點我
+                    img(src="./img/sec1/kv1_arrow.svg", alt="")
+              li.splide__slide
+                .sec1__box
+                  img(src="./img/sec1/kv1_recharge.svg", alt="指定通路消費回饋NT$300")
+                  h3.sec1__credit DAWHO 信用卡
+                    br
+                    | 悠遊卡自動加值10%
+                  p.sec1__creditinfo 大戶等級每月帳單
+                    br
+                    | 加碼10%回饋上限與七大指定通路合計NT$300/月
+                  a.sec1__button.sec1__button--link.underline(href="https://dawho.tw/about/card/?strProd=0174&strWeb=0549&tickset=SIN020&tko=Q2DTOU" target="_blank") 詳情點我
+                    img(src="./img/sec1/kv1_arrow.svg", alt="")
+
+    //-活動辦法
+    .sec2
+      .sec2__container
+        .sec2__title.js-animate.js-animate--fadein
+          h2 活動辦法
+          img(src="./img/sec2/kv2_title.svg", alt="活動辦法")
+
+        .sec2__notice.js-animate.js-animate--fadein.js-animate--delay200
+          .sec2__noticebtn#cash 首登抽台積電股票等值現金
+          .sec2__noticeinfo#cashdesc
+            .sec2__wrapper
+              img.sec2__arrow1(src="./img/sec2/up-arrows.svg", alt="")
+              img.sec2__arrow2(src="./img/sec2/up-arrows.svg", alt="")
+            h3 【DAWHO|大戶投首登活動：首登抽台積電股票等值現金】活動辦法
+            ol.cjk
+              li 活動名稱：首登抽台積電股票等值現金
+              li 活動期間：2025年4月1日至2025年6月30日止。
+              li 活動資格：未曾登入DAWHO APP之本國自然人(以下簡稱「參加者」，永豐金控、銀行員工不適用)。
+              li 活動內容：活動期間內於指定活動網頁連結成功成為DAWHO | 大戶投會員(即推薦人代碼為「Q2DTOU」)，並於活動期間內完成首次登入DAWHO APP，即享「台積電股票66股等值現金」抽獎機會乙次。
+              li 「台積電股票66股等值現金」抽獎獎項說明：
+              ol.decimal1em
+                li 等值現金如何換算：以活動開跑當日(2025年4月1日)台股市場之「2330-台積電」之股價收盤價計算66股之等值現金。
+                li 活動獎項名額：共10名。
+              li 回饋說明
+              ol.decimal1em
+                li 將於活動結束後抽出獲獎者，並於2025年7月31日前公布於官網活動頁。
+                li.fw-bold 獲獎者須配合填寫及回傳領獎申請書及相關文件，方能獲得回饋。若未於年7月25日前完成，將視同放棄中獎資格。
+                li 現金回饋將於2025年8月30日前回饋至獲獎者所持之DAWHO數位帳戶中。
+                  span.fw-bold (請務必留意回饋金發送至您的帳戶前，若您已將「DAWHO數位帳戶」結清銷戶，則將失去參加本活動及中獎之資格。)
+              li.fw-bold 本活動之參加者若曾成功參加任何與DAWHO APP首次登入相關之行銷推廣活動，即無法參加本活動。
+              li 其他注意事項：
+              ol.decimal1em
+                li 本活動之參加者限居住於臺、澎、金、馬地區之本國國民參加，資料若有不實，將取消參加及中獎資格，永豐銀行保留審核參加者資格之權利。
+                li 本活動各獎項之中獎名單將依照永豐銀行審核或公告為準，永豐銀行保留變更贈品內容或改由其他等值贈品取代之權利。本活動各獎項發放前，若參加者已將「DAWHO數位帳戶」結清銷戶，則失去參加本活動及中獎資格。
+                li 本行有權檢視各項交易，若參加人有違反活動注意事項之行為或涉及不正當得利及非法行為，或中獎者如於獎項寄送前帳戶狀態為銷戶、警示、帳戶未正式啟用等，皆視為非有效DAWHO數位帳戶而喪失活動參與資格，本行將公告排除其參與活動及兌領資格。
+                li.fw-bold 依所得稅法規定，中獎人如為中華民國境內居住之個人，競技競賽及機會中獎之獎金或給與，年度累積金額(價值)超過NT$1,000整，將列入個人年度綜合所得，依規定列單申報所得，並開立各類所得扣繳憑單；中獎人如為非中華民國境內居住之個人，無論中獎金額多寡，按給付全額扣取百分之二十，並於代扣稅款十日內辦理扣繳憑單申報。若中獎人不願接受，永豐銀行將取消中獎資格。
+                li 本活動之中獎、有效登入等活動內容，均以永豐銀行電腦系統紀錄與永豐銀行認定為準，經永豐銀行檢視不符合得獎資格者，或有其他不正當或非法行為，永豐銀行有權取消其領獎資格。
+                li 若有任何因為電腦、網路、電話、技術或不可歸責於永豐銀行之事由，而使參加者所登錄之資料有遺失、錯誤、無法辨識或毀損情況，永豐銀行不負任何法律責任，參加者或中獎人亦不得因此異議。
+                li 參加者於參加活動時，即同意接受本活動注意事項規範；中獎人資格不符合或違反本活動規定事項者，永豐銀行保有取消中獎資格之權利。
+                li 個資告知事項：本活動參加者瞭解及同意永豐銀行為行銷及辦理本活動之需要進行蒐集、處理及利用其個人資料。永豐銀行本於誠實信用原則及必要性原則蒐集、處理或利用參加者於本網路登載及基於上開特定目的與永豐銀行往來之個人資料。「永豐銀行個人資料蒐集、處理及利用告知義務內容」請詳閱官網。
+                li 永豐銀行保留隨時修改、變更、終止或暫停本活動之權利；若有其他未盡事宜，悉依永豐銀行相關規定或解釋為準。
+        .sec2__notice.js-animate.js-animate--fadein.js-animate--delay400
+          .sec2__noticebtn#certificate NT$200超商電子禮券
+          .sec2__noticeinfo#certificatedesc
+            .sec2__wrapper
+              img.sec2__arrow3(src="./img/sec2/up-arrows.svg", alt="")
+            h3 【NT$200超商電子禮券】
+            ol.cjk
+              li 活動期間：2025年4月1日至2025年4月30日止。
+              li 此活動為永豐金證券舉辦，限證券新戶參加。活動內容及細項請參考
+                a.underline.fc-black(href="https://www.sinotrade.com.tw/ec/20250106/index.html?strProd=0174&strWeb=0522&utm_source=bank&utm_medium=button&utm_campaign=totrade&utm_term=nonpaid&utm_content=tou" target="_blank") 此活動網頁之說明
+                |，若有任何問題請洽永豐金證券客服。
+              //- li 活動資格：尚未開立大戶投（永豐金證券帳戶）*且限年滿18 歲、不具備美國納稅義務人身分(FATCA)之本國自然人(不含98戶)。
+              //-   br
+              //-   span *尚未開立大戶投（永豐金證券帳戶）之定義：從未在永豐金證券開立證券帳戶或證券帳戶銷戶滿半年以上之本國自然人。
+              //- li 活動內容：於活動期間內線上完成開立大戶投(即永豐金證券戶)，即符合本項活動贈獎資格，可獲得NT$200超商電子禮券乙份，領獎資格以身分證字號為計算依據，每一身分證字號限領乙次。
+              //- ol.decimal1em
+              //-   li 此活動獎項由永豐金證券直接回饋。
+              //-   li 本活動優惠不得同時適用永豐銀行、永豐金證券其他新戶優惠活動。
+              //-   li 【NT$200超商電子禮券】獎項及回饋說明：活動贈品將由永豐金證券提供及回饋。
+              //-   li 開戶好禮回饋NT$200超商電子禮券：活動每月限量回饋3,000名，依當月開戶完成時間之先後排序，若遇開戶完成時間相同時，再依開戶進件時間之先後排序。
+              //-   li Edenred 宜睿即享券商品兌換序號」將於2025年5月31日(含)前，以簡訊發送至得獎者留存本公司之手機號碼。若客戶未留下有效之手機號碼，及屬於非系統因素等不可歸責於永豐金證券之事由，導致電子票券商品兌換序號寄送失敗或未取得者，恕不補發，亦不得要求更換其他補償。獎勵派發不另行通知。
+              //-   li 產品內容及使用方式悉以「Edenred 宜睿」網站公告及憑證內容限制為準。
+              //-   li 本公司非贈獎品製造者，因使用票券所生爭議，悉依 「Edenred 宜睿即享券」票券使用規則。
+              //- li 其他注意事項
+              //- ol.decimal1em
+              //-   li 活動參加者應保證參加本活動之資料均為真實、正確且完整，且未冒用或盜用任何第三人之資料：若因此永豐金證券無法通知其得獎訊息時，永豐金證券不負任何責任，如永豐金證券或其他第三人因此而受有損害，參加者應負一切相關責任；如因參加者提供資料不全、有誤或因電腦、網路、電話、技術或其他不可歸責於永豐金證券之事由，而導致獎品郵件退回、冒領、遺失或毀損等情形，恕不另行補發，永豐金證券不負任何責任。
+              //-   li 參加者於參加本活動時，即表示同意本活動辦法，並充分知悉與同意以下事項：永豐金證券得因本活動之需要，依個人資料保護相關規定，於參加者同意之期間內，以電子檔或紙本形式於我國境內蒐集、處理、利用其個人資料。參加者可自由選擇是否提供完整個人資訊，惟若資訊不完整者，將無法參加本活動。
+              //-   li 永豐金證券得因為本活動目的公佈參與者去識別化之姓名及身分證字號於網站、平面或其他媒體。
+              //-   li 永豐金證券有權檢視得獎情況是否有人為操作之行為，若發現參加者透過系統漏洞或非法手段（惡意程式等類似行為）參與活動，或以偽造、詐欺或其他不正當之方式意圖兌領之參加者，永豐金證券有權取消資格，永豐金證券並不另行通知。
+              //-   li 活動參加者之交易若有涉嫌違反證券交易法、期貨交易法、洗錢防制法及臺灣證券交易所、期貨交易所、中華民國證券商業同業公會、中華民國期貨業商業同業公會、財團法人證券櫃檯買賣中心等機構之相關規定，永豐金證券有權取消其抽獎或得獎之資格。參與者如因違反與永豐金證券間之合約或其他法令，致其帳戶遭停權者，亦同。
+              //-   li 永豐金證券非獎品製造者或提供者，與各項獎品或服務之製造或提供廠商無任何代理或合夥關係，如領取後對獎品之使用方式、售後服務、保固等發生任何爭議，概與永豐金證券無關。
+              //-   li 本活動所有獎項一律不得要求折換現金或轉讓予他人，該獎項如因其他不可抗力因素造成該獎項無法提供時，永豐金證券有權將原獎項調整為其他等值商品，中獎者不得因此異議。
+              //-   li 永豐金證券保有取消、終止、修改、暫停、延長、提前終止本活動之權利，本活動辦法若未盡詳細事宜，得隨時修訂公佈，修改訊息將於本網站上公佈，不另行通知。
+              //-   li 永豐金證券就活動內容、獎項內容得依實際狀況及較佳效果斟酌調整，並保有對於本活動規則之解釋權利。
+
+        .sec2__title.js-animate.js-animate--fadein.js-animate--delay600
+          h2 產品疑問
+          img(src="./img/sec2/kv2_title_2.svg", alt="產品疑問")
+        .sec2__notice.js-animate.js-animate--fadein.js-animate--delay800
+          h3.sec2__noticebtn#product 產品注意事項
+          .sec2__noticeinfo#productdesc
+            .sec2__wrapper
+              img.sec2__arrow4(src="./img/sec2/up-arrows.svg", alt="")
+            p.fw-bold 對DAWHO提供的金融商品有疑問？
+            ul
+              li 請參考以下產品網站之詳細說明，或至常見問題頁面查看你想了解的相關訊息。
+              li
+                a.underline.fc-black(href="https://dawho.tw/hot/dawhotou/?strProd=0174&strWeb=0549&tickset=SIN020&tko=Q2DTOU" target="_blank") DAWHO | 大戶投 (證券)
+              li
+                a.underline.fc-black(href="https://dawho.tw/about/memberloyalty/index.html?strProd=0174&strWeb=0549&tickset=SIN020&tko=Q2DTOU" target="_blank") 大戶等級
+              li
+                a.underline.fc-black(href="https://dawho.tw/about/debitcard/?strProd=0174&strWeb=0549&tickset=SIN020&tko=Q2DTOU" target="_blank") DAWHO多幣Debit卡
+              li
+                a.underline.fc-black(href="https://dawho.tw/about/card/?strProd=0174&strWeb=0549&tickset=SIN020&tko=Q2DTOU" target="_blank") DAWHO現金回饋卡
+
+    #sidelinks
+      a.link.mediabtn(href="https://applydawho.sinopac.com/OpenAccount/OpenAccount/Login/NewNew?strProd=0174&strWeb=0549&tickset=SIN020&tko=Q2DTOU" target="_blank")
+        .inner-text
+          span 立即
+            br.revese-br
+            | 當大戶
+
+    #qrcode-popup(style="display: none;")
+      .popup__container
+        button.close
+          img(src="./img/popup/icon_close.svg", alt="")
+
+        .popup__box
+          .popup__title
+            img(src="./img/popup/pop_title.svg", alt="月月輕鬆大戶等級")
+            p 2025/1/1-2025/6/30
+          .popup__content
+            .popup__head
+              .popup__dot1
+              .popup__dot2
+              .popup__dot3
+            .popup__info
+              p 新戶開戶成功
+            p.popup__text 新戶開戶成功後至
+              span.underline.fw-bold 次月月底
+              span 皆享「大戶」等級
+            .popup__info
+              p 台股現貨交易
+            p.popup__text
+              span 有任一筆台股現貨交易成交(含豐存股)，
+              span.underline.fw-bold 下個月
+              span 即享「大戶等級」
+            .popup__warning
+              div
+                img(src="./img/popup/pop_i.svg", alt="")
+                p 若全額以股票禮物卡抵扣，未有實際交割金額將無法認列
+              div
+                img(src="./img/popup/pop_i.svg", alt="")
+                p 詳細認定條件，請參考此
+                  a.underline(href="https://dawho.tw/faq/memberloyalty/" target="_blank") 常見問題
+            a.popup__link.underline(href="https://dawho.tw/about/memberloyalty/index.html?strProd=0174&strWeb=0549&tickset=SIN020&tko=Q2DTOU#blackbanner" target="_blank") 了解大戶等級詳情
+              img(src="./img/popup/pop_arrow.svg", alt="")
+
+
+    //- 活動結束彈窗
+    #popup-end 
+      #popup-end-main 
+        img.deco-gift(src="./img/popup/gift_open.png", alt="")
+        button#close-popup-btn.popup-btns(type="button") 
+          img(src="./img/popup/close.svg", alt="") 
+        .title 中獎名單公告
+        .subtitle 感謝您的參與，活動已結束！
+        .text 
+          |DAWHO將於2025年8月30日前回饋至獲獎者所持之DAWHO數位帳戶中。感謝您對永豐銀行DAWHO數位帳戶的支持與愛護。
+        .links           
+          button.popup-btns(type="button") 
+            span 關閉本視窗
+          a.popup-btns(href="first-login_winner-list.pdf" target="_blank") 
+            span 中獎名單

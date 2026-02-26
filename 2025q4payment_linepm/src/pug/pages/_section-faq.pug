@@ -1,0 +1,17 @@
+//- 常見問題區塊
+section.section-faq#section-faq
+  .section-faq__light.section-faq__L.section-faq--left
+  .section-faq__light.section-faq__L.section-faq--right
+
+  .circle.circle__L.circle--left
+  .circle.circle__S.circle--right
+  .circle.circle__mobile.circle--mb
+
+  //- 內容
+  .section-faq__wrapper
+    h2.section-faq__title.section-faq__title--mb.js-animate.js-animate--fadein-down 常見問題
+    .section-faq__list
+        .section-faq__box
+          each data, index in faq_data
+            +faq-item(index+1, data.title, data.content)
+

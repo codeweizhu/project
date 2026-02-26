@@ -1,0 +1,134 @@
+.lightbox {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: rgba(1, 0, 0, 0.6);
+  z-index: -1;
+  display: none;
+  opacity: 0;
+  text-align: center;
+  letter-spacing: normal;
+  &--active {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    opacity: 1;
+    animation: fadeIn 0.4s;
+    z-index: 10;
+  }
+
+  &__box {
+      position: relative;
+      max-width: 810px;
+      transition: transform 0.2s ease-out;
+      margin: 10px auto;
+      background: #FFF;
+      padding: px-em(30) px-em(60);
+      border-radius: px-em(40);
+      max-height: 120vh;
+
+    .lightbox--active & {
+      animation: fadeIn 0.35s;
+    }
+  }
+
+  &__title {
+    font-size: 40px;
+    line-height: (25/20);
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 24px;
+    color: #000;
+  }
+  &__desc {
+    font-size: 20px;
+    text-align: left;
+    line-height: 1.5;
+    color: #000;
+    font-family: "Noto Sans TC";
+    &-center {
+      text-align: center;
+    }
+    &+.lightbox__desc {
+      margin-top: 24px;
+    }
+  }
+
+
+
+  //  內容
+
+  // 燈箱內的線框按鈕
+  &__btnblock {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 28px;
+  }
+  &__btn {
+    display: inline-block;
+    border: 3px solid #CD9B1D;
+    background-color: #666;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    line-height: 1.2;
+    padding: 10px 24px;
+    border-radius: 10px;
+    // width: 174px;
+    cursor: pointer;
+    margin:0 10px;
+    text-wrap: nowrap;
+    &:hover {
+        background-color: #CD9B1D;
+        border-color: #666 ;
+    }
+
+  }
+
+@include b768 {
+  &__box {
+    padding: vwm(40px);
+  }
+  &__title {
+    font-size: vwm(44px);
+    padding-bottom: vwm(44px);
+  }
+  &__desc {
+    font-size: vwm(28px);
+    &+.lightbox__desc  {
+      margin-top: vwm(40px);
+    }
+  }
+  &__btnblock {
+    margin-top: vwm(40px);
+    flex-wrap: wrap;
+  }
+  &__btn {
+    font-size: vwm(36px);
+    min-width: vwm(180px);
+    margin: vwm(10px);
+    // width: 240px;
+    padding:vwm(16px) vwm(20px);
+  }
+}
+@include b375 {
+  &__btnblock {
+   max-width: 200px;
+   margin: vwm(40px) auto auto auto;
+  }
+  &__btn {
+    width: 100%;
+    padding:vwm(20px) vwm(20px);
+  }
+  &__desc {
+    font-size: vwm(30px);
+  }
+}
+
+}

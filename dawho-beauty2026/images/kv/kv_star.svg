@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_圖層_2" data-name="圖層 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 71.04 71.73">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#New_Gradient_Swatch_copy_3);
+      }
+    </style>
+    <linearGradient id="New_Gradient_Swatch_copy_3" data-name="New Gradient Swatch copy 3" x1="-645.57" y1="-353.04" x2="-573.52" y2="-353.04" gradientTransform="translate(-186.08 -631.49) rotate(-138.01)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#be905a"/>
+      <stop offset=".05" stop-color="#cda061"/>
+      <stop offset=".12" stop-color="#d9ac67"/>
+      <stop offset=".18" stop-color="#ddb169"/>
+      <stop offset=".18" stop-color="#ddb26a"/>
+      <stop offset=".25" stop-color="#e8c886"/>
+      <stop offset=".32" stop-color="#f0d79a"/>
+      <stop offset=".38" stop-color="#f5e0a6"/>
+      <stop offset=".45" stop-color="#f7e4ab"/>
+      <stop offset=".52" stop-color="#e0c492"/>
+      <stop offset=".59" stop-color="#cca87c"/>
+      <stop offset=".67" stop-color="#be946d"/>
+      <stop offset=".75" stop-color="#b58864"/>
+      <stop offset=".82" stop-color="#b38461"/>
+      <stop offset=".89" stop-color="#b78862"/>
+      <stop offset=".95" stop-color="#c49567"/>
+      <stop offset="1" stop-color="#d2a26c"/>
+    </linearGradient>
+  </defs>
+  <g id="_圖層_4" data-name="圖層 4">
+    <polygon class="cls-1" points="40.4 0 47.16 24.33 71.04 32.56 50 46.49 49.56 71.73 29.79 56.01 5.66 63.42 14.48 39.78 0 19.09 25.21 20.17 40.4 0"/>
+  </g>
+</svg>

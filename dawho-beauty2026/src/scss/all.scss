@@ -1,0 +1,993 @@
+@import "reset";
+@import "base";
+@import "header";
+@import "loading";
+@import "js-animate";
+@import "keyframes";
+@import "table";
+@import "footer";
+@import "lightbox";
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans TC", sans-serif;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  color: #42210b;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    text-decoration: none;
+  }
+}
+.text-title {
+  position: absolute;
+  z-index: -99;
+  text-indent: 9999px;
+  overflow: hidden;
+}
+.wrapper {
+  overflow: hidden;
+  background-color: #000;
+}
+
+//-kv
+.sec1 {
+  &__wrapper {
+    background: url('../images/kv/kv_bg.svg') no-repeat center;
+    // background-size: 100% auto;
+    background-size: cover;
+    background-color: #131619;
+    overflow: hidden;
+  }
+  &__kv {
+    max-width: 1200px;
+    margin: 60px auto 0;
+    display: flex;
+    justify-content: center;
+    min-height: 740px;
+    position: relative;
+    @include breakpoint(lg){
+      max-width: vw(1200px);
+      min-height: vw(740px);
+    }
+    @include breakpoint(sm){
+      min-height: vwm(600px);
+      margin-top: vwm(110px);
+    }
+  }
+  &__screen {
+    max-width: 766px;
+    width: 100%;
+    height: 619px;
+    margin: 0 auto;
+    position: absolute;
+    @include breakpoint(lg){
+      max-width: vw(766px);
+      height: vw(619px);
+    }
+    @include breakpoint(sm){
+      height: vwm(474px);
+      max-width: vwm(567px);
+    }
+  }
+  &__circleUS {
+    max-width: 300px;
+    position: absolute;
+    top: 55px;
+    left: 68px;
+    @include breakpoint(lg){
+      max-width: vw(300px);
+      top: vw(55px);
+      left: vw(68px);
+    }
+    @include breakpoint(sm){
+      max-width: vw(320px);
+      top: vwm(45px);
+      left: vwm(-15px);
+    }
+  }
+  &__circleCNY {
+    max-width: 300px;
+    position: absolute;
+    top: 102px;
+    right: 68px;
+    @include breakpoint(lg){
+      max-width: vw(300px);
+      top: vw(102px);
+      right: vw(68px);
+    }
+    @include breakpoint(sm){
+      max-width: vw(320px);
+      top: vwm(84px);
+      right: vwm(-18px);
+    }
+  }
+  &__title1 {
+    position: absolute;
+    max-width: 368px;
+    top: 84px;
+    @include breakpoint(lg){
+      max-width: vw(368px);
+      top: vw(84px);
+    }
+    @include breakpoint(sm){
+      max-width: vwm(277px);
+      top: vwm(55px);
+    }
+  }
+  &__title2 {
+    position: absolute;
+    max-width: 415px;
+    top: 310px;
+    @include breakpoint(lg){
+      max-width: vw(415px);
+      top: vw(310px);
+    }
+    @include breakpoint(sm){
+      max-width: vwm(310px);
+      top: vwm(222px);
+    }
+  }
+  &__title3 {
+    position: absolute;
+    max-width: 415px;
+    top: 443px;
+    @include breakpoint(lg){
+      max-width: vw(415px);
+      top: vw(443px);
+    }
+    @include breakpoint(sm){
+      max-width: vwm(294px);
+      top: vwm(321px);
+    }
+  }
+  &__desc {
+    position: absolute;
+    top: 648px;
+    color: #fff;
+    font-size: 36px;
+    @include breakpoint(lg){
+      top: vw(648px);
+      font-size: vw(36px);
+    }
+    @include breakpoint(sm){
+      top: vwm(508px);
+      font-size: vwm(32px);
+    }
+  }
+  //-circle
+  &__circle {
+    position: absolute;
+    opacity: 0;
+    transform: translateY(300px);
+    img {
+      width: 100%;
+    }
+    @include breakpoint(lg){
+        display: none;
+    }
+    &-1 {
+      max-width: 63px;
+      bottom: 136px;
+      left: -95px;
+      filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.1));
+    }
+    &-2 {
+      max-width: 61px;
+      bottom: 105px;
+      left: -242px;
+      filter: drop-shadow(0 0 10px rgba(255, 160, 50, 0.3));
+    }
+    &-3 {
+      max-width: 82px;
+      bottom: 20px;
+      left: 96px;
+      filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.2));
+    }
+    &-4 {
+      max-width: 59px;
+      bottom: 131px;
+      right: -280px;
+      filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.3));
+    }
+    &-5 {
+      max-width: 65px;
+      bottom: 55px;
+      right: -170px;
+      filter: drop-shadow(0 0 10px rgba(255, 160, 50, 0.4));
+    }
+  }
+}
+
+
+//content
+.sec2 {
+  &__main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-size: cover;
+    width: 100%;
+    background-color: #131619;
+    position: relative;
+    overflow: hidden;
+  }
+  &__line1 {
+    position: absolute;
+    top: -350px;
+    right: -778px;
+    width: 1278px;
+    height: 1195px;
+    overflow: hidden;
+    z-index: 0;
+
+    animation: pulse-glow 2.2s infinite ease-in-out;
+    filter: brightness(1) drop-shadow(0 0 6px rgba(255, 215, 0, 0.5));
+    transition: filter 0.3s ease;
+    @include breakpoint(lg){
+      right: vw(-778px);
+      top: vw(-350px);
+      width: vw(1278px);
+      height: vw(1195px);
+    }
+    @include breakpoint(sm){
+      display: none;
+    }
+  }
+  &__line2 {
+    content: "";
+    position: absolute;
+    left: -793px;
+    top: 250px;
+    width: 1278px;
+    height: 1195px;
+    z-index: 0;
+    pointer-events: none;
+
+    animation: pulse-glow 2.4s infinite ease-in-out;
+    filter: brightness(1) drop-shadow(0 0 6px rgba(255, 215, 0, 0.5));
+    transition: filter 0.3s ease;
+    @include breakpoint(lg){
+      left: vw(-793px);
+      top: vw(250px);
+      width: vw(1278px);
+      height: vw(1195px);
+    }
+    @include breakpoint(sm){
+      display: none;
+    }
+  }
+
+
+  &__star1 {
+    position: absolute;
+    max-width: 71px;
+    top: 950px;
+    left: 320px;
+    z-index: 0;
+    @include breakpoint(lg){
+      max-width: vw(71px);
+      top: vw(1020px);
+      left: vw(320px);
+    }
+    @include breakpoint(sm){
+      display: none;
+    }
+  }
+  &__star2 {
+    position: absolute;
+    max-width: 55px;
+    bottom: 450px;
+    left: 70px;
+    z-index: 0;
+    @include breakpoint(lg){
+      max-width: vw(55px);
+      bottom: vw(450px);
+      left: vw(70px);
+    }
+    @include breakpoint(sm){
+      display: none;
+    }
+  }
+  &__star3 {
+    position: absolute;
+    max-width: 67px;
+    bottom: 700px;
+    right: 240px;
+    z-index: 0;
+    @include breakpoint(lg){
+      max-width: vw(67px);
+      bottom: vw(800px);
+      right: vw(240px);
+    }
+    @include breakpoint(sm){
+      display: none;
+    }
+  }
+  &__star4 {
+    position: absolute;
+    max-width: 68px;
+    bottom: 590px;
+    right: 40px;
+    z-index: 0;
+    @include breakpoint(lg){
+      max-width: vw(68px);
+      bottom: vw(590px);
+      right: vw(40px);
+    }
+    @include breakpoint(sm){
+      display: none;
+    }
+  }
+  &__star5 {
+    position: absolute;
+    max-width: 37px;
+    bottom: 340px;
+    right: 120px;
+    z-index: 0;
+    @include breakpoint(lg){
+      max-width: vw(37px);
+      bottom: vw(340px);
+      right: vw(120px);
+    }
+    @include breakpoint(sm){
+      display: none;
+    }
+  }
+
+
+  &__container {
+    max-width: 1200px;
+    width: 100%;
+    // padding: 0 30px;
+    padding: 0 8px;
+    margin-top: 40px;
+    z-index: 2;
+    // outline: 2px solid red;
+    @include breakpoint(lg){
+      max-width: vw(1200px);
+      padding: 0 vw(30px);
+      margin-top: vw(40px);
+    }
+    @include breakpoint(sm){
+      padding: 0;
+    }
+  }
+  &__intro {
+    max-width: 812px;
+    margin: 0 auto ;
+    overflow: hidden;
+    text-align: center;
+    .mark {
+      font-size: 36px;
+      color: red;
+      @include breakpoint(lg){
+        font-size: vw(36px);
+      }
+      @include breakpoint(sm){
+        font-size: vwm(42px);
+      }
+    }
+    @include breakpoint(lg){
+      max-width: vw(812px);
+    }
+    @include breakpoint(sm){
+      max-width: 100%;
+    }
+  }
+  &__step {
+    margin-top: 134px;
+    @include breakpoint(lg){
+      margin-top: vw(134px);
+    }
+  }
+  &__title {
+    text-align: center;
+    font-size: 45px;
+    margin-bottom: 88px;
+    font-weight: bold;
+    color: #FFFFFF;
+    &:first-child {
+      margin-bottom: 40px;
+      @include breakpoint(lg){
+        margin-bottom: vw(40px);
+      }
+      @include breakpoint(sm){
+        margin-bottom: vwm(40px);
+      }
+    }
+    @include breakpoint(lg){
+      font-size: vw(45px);
+      margin-bottom: vw(88px);
+    }
+    @include breakpoint(sm){
+      font-size: vwm(52px);
+      margin-bottom: 0;
+    }
+    &--style {
+      // outline: 1px solid red;
+      margin: 0 auto;
+      text-align: left;
+      max-width: 812px;
+      font-size: 36px;
+      position: relative;
+      @include breakpoint(lg){
+        max-width: vw(812px);
+        font-size: vw(36px);
+      }
+      @include breakpoint(sm){
+        max-width: vwm(812px);
+        font-size: vwm(36px);
+      }
+      &::after {
+        position: absolute;
+        content: "";
+        border: 1px solid #fff;
+        top: 50%;
+        right: 0px;
+        max-width: 440px;
+        width: 100%;
+        @include breakpoint(lg){
+          max-width: vw(440px);
+        }
+        @include breakpoint(sm){
+          max-width: vwm(350px);
+        }
+      }
+    }
+  }
+  &__condition {
+    color: #fff;
+    max-width: 812px;
+    margin: 0 auto 12px;
+    font-size: 18px;
+    line-height: 1.5;
+    letter-spacing: 0.1em;
+    text-align: justify;
+    .m-left {
+      margin-left: 20px;
+      @include breakpoint(lg){
+        margin-left: vw(20px);
+      }
+      @include breakpoint(sm){
+        margin-left: 0;
+      }
+    }
+    @include breakpoint(lg){
+      max-width: vw(812px);
+      margin: 0 auto vw(12px);
+      font-size: vw(24px);
+    }
+    @include breakpoint(sm){
+      max-width: vwm(812px);
+      margin: 0 auto vwm(12px);
+      font-size: vwm(29px);
+      ol{
+        padding-left: 1.3em;
+      }
+    }
+  }
+  &__steplist {
+    //-輪播
+    .flex {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      @include breakpoint(sm) {
+        display: block;
+      }
+      .slider {
+        max-width: 482px;
+        width: 100%;
+        margin:0 45px;
+        order: 1;
+        display: flex;
+        @include breakpoint(lg){
+          max-width: vw(482px);
+          margin:0 vw(45px);
+        }
+        @include breakpoint(sm) {
+          margin: 0 auto;
+          max-width: vwm(485px);
+        }
+        .slick-dots {
+          opacity: 0;
+          pointer-events: none;
+          @include breakpoint(sm) {
+            opacity: 1;
+            pointer-events: auto;
+            position: absolute;
+            top: vwm(-180px);
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            overflow: visible;
+          }
+          li {
+            @include breakpoint(sm) {
+              display: inline-flex;
+              justify-content: center;
+              align-items: center;
+              background: #333;
+              border-radius: 50%;
+              font-size: vwm(30px);
+              font-weight: 700;
+              color: #fff;
+              cursor: pointer;
+              width: vwm(94px);
+              height: vwm(94px);
+              margin: 0 vwm(18px);
+              line-height: vwm(94px);
+              &.slick-active {
+                color: #111;
+                background: #EDCC94;
+              }
+            }
+          }
+        }
+        &__img {
+          background: url(../images/kv/img_bg_circle.svg) no-repeat center;
+          background-size: 100%;
+          img {
+            display: block;
+            width: 60%;
+            margin: 0 auto;
+          }
+        }
+      }
+      .list {
+        order: 2;
+        @include breakpoint(sm) {
+          // margin: vwm(50px) auto vwm(130px) auto;
+          margin: vwm(50px) auto vwm(260px);
+        }
+        &__item {
+          color: #686868;
+          font-size: 24px;
+          padding-bottom: 20px;
+          margin-bottom: 35px;
+          border-bottom: 1px solid #686868;
+          line-height: 35px;
+          cursor: pointer;
+          @include breakpoint(lg){
+            font-size: vw(24px);
+            padding-bottom: vw(20px);
+            margin-bottom: vw(16px);
+            line-height: vwm(35px);
+          }
+          @include breakpoint(sm) {
+            display: none;
+          }
+          img {
+            display: block;
+            width: 87px;
+            margin-bottom: 8px;
+            opacity: 0.3;
+            @include breakpoint(sm){
+              // width: vwm(200px);
+              margin-bottom: vwm(30px);
+            }
+          }
+          &.active {
+            // font-size: 28px;
+            // letter-spacing: 1.4px;
+            color: #EDCC94;
+            border-bottom: 0;
+            padding-bottom: 0;
+            @include breakpoint(sm) {
+              display: block;
+              text-align: center;
+              // max-width: 320px;
+              margin: 0 auto vwm(30px) auto;
+              text-wrap: nowrap;
+              font-size: vwm(34px);
+            }
+            &:after {
+              content: "";
+              display: block;
+              width: 100%;
+              height: 26px;
+              background: linear-gradient(180deg, #EDCC94 -68.01%, rgba(237, 204, 148, 0.00) 84.57%);
+              border-top: 3px solid #EDCC94;
+              margin-top: 16px;
+              @include breakpoint(lg){
+                height: vwm(26px);
+                margin-top: vw(16px);
+              }
+              @include breakpoint(sm) {
+                display: none;
+              }
+            }
+            img {
+              width: 98px;
+              opacity: 1;
+              @include breakpoint(sm) {
+                width: vwm(200px);
+                margin: 0 auto vwm(20px) auto;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+//-faq
+.sec3 {
+  &__wrapper {
+    background: url('../images/kv/kv_bg2.svg') no-repeat center;
+    background-size: cover;
+    background-color: #131619;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+  &__line1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-70%);
+    top: 100px;
+    width: 1279px;
+    height: 1195px;
+    overflow: hidden;
+    z-index: 0;
+    animation: pulse-glow 2.2s infinite ease-in-out;
+    filter: brightness(1) drop-shadow(0 0 6px rgba(255, 215, 0, 0.5));
+    transition: filter 0.3s ease;
+    @include breakpoint(lg){
+      top: vw(100px);
+      height: vw(1195px);
+      width: vw(1279px);
+    }
+    @include breakpoint(sm){
+      display: none;
+    }
+  }
+  &__title {
+    text-align: center;
+    font-size: 45px;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin: 60px 0;
+    z-index: 2;
+    @include breakpoint(lg){
+      font-size: vw(45px);
+      margin: vw(60px) 0;
+    }
+    @include breakpoint(sm){
+      font-size: vwm(52px);
+      margin: vwm(120px) 0 vwm(60px);
+    }
+  }
+  &__container {
+    counter-reset: step;
+    max-width: 1200px;
+    margin: 0 auto 100px;
+    padding: 0 30px;
+    position: relative;
+    @include breakpoint(lg){
+      max-width: vw(1200px);
+      margin: 0 auto vw(100px);
+      padding: 0;
+    }
+    @include breakpoint(sm){
+      margin: 0 auto vwm(120px);
+    }
+  }
+  &__box{
+    margin-bottom: 24px;
+    @include breakpoint(lg){
+      margin-bottom: vw(24px);
+    }
+    @include breakpoint(sm){
+      margin-bottom: vwm(32px);
+    }
+  }
+  &__problem {
+    background-color: #0000006b;
+    color: $mainColor;
+    padding: 16px 16px 16px 42px;
+    overflow: hidden;
+    font-size: 20px;
+    position: relative;
+    cursor: pointer;
+    text-align: justify;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include breakpoint(sm){
+      padding: vwm(16px) vwm(16px) vwm(16px) vwm(60px);
+      font-size: vwm(32px);
+    }
+    &::before {
+      content: "Q" counter(step);
+      counter-increment: step;
+      position: absolute;
+      left: 8px;
+      @include breakpoint(sm){
+        left: vwm(12px);
+      }
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      transition: transform 0.25s ease-out;
+      background: url("../images/kv/kv_open.svg") no-repeat center;
+      background-size: contain;
+      width: 16px;
+      height: 16px;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      @include breakpoint(sm){
+        width: vwm(21px);
+        height: vwm(21px);
+        right: vwm(24px);
+      }
+    }
+    &.is-open::after {
+      background: url("../images/kv/kv_close.svg") no-repeat center;
+      background-size: contain;
+    }
+  }
+  &__answer {
+    padding: 8px;
+    display: none;
+    background-color: #0000006b;
+    color: #fff;
+    line-height: 1.5;
+    text-align: justify;
+    // padding: 0 16px 16px;
+    padding: 16px 40px 16px 16px;
+    font-size: 16px;
+    @include breakpoint(lg){
+      // padding: 0 vw(16px) vw(16px);
+      padding: vw(16px) vw(48px) vw(16px) vw(16px);
+    }
+    @include breakpoint(sm){
+      // outline: 1px solid red;
+      padding: vwm(16px) vwm(48px) vwm(16px) vwm(16px);
+      font-size: vwm(28px);
+    }
+  }
+  &__notice {
+    font-weight: 500;
+    margin-top: 80px;
+    @include breakpoint(lg){
+      margin-top: vw(80px);
+    }
+    @include breakpoint(sm){
+      margin-top: vwm(80px);
+      //outline: 2px solid red;
+    }
+    &__toggle {
+      font-size: 36px;
+      text-align: center;
+      border: 1px solid #e9ad72;
+      background: #e9ad72;
+      padding: 12px 0;
+      cursor: pointer;
+      color: #42210b;
+      position: relative;
+      // outline: 1px solid red;
+      @include breakpoint(lg){
+        font-size: vw(36px);
+        border: vw(1px) solid #e9ad72;
+        padding: vw(12px) 0;
+      }
+      @include breakpoint(sm){
+        font-size: vwm(36px);
+        padding: vwm(12px) 0;
+      }
+      &::after,&::before {
+        content: '';
+        position: absolute;
+        // display: inline-block;
+        background:url("../images/kv/kv_open2.svg") no-repeat center;
+        background-size: contain;
+        transition: transform 0.25s ease-out;
+        width: 24px;
+        height: 24px;
+        @include breakpoint(lg){
+          width: vw(24px);
+          height: vw(24px);
+        }
+        @include breakpoint(sm){
+          width: vwm(24px);
+          height: vwm(24px);
+        }
+      }
+      &::after {
+        top: 54%;
+        left: 405px;
+        transform: translateY(-50%);
+        @include breakpoint(lg){
+          left: vw(434px);
+          top: 52%;
+        }
+        @include breakpoint(sm){
+          left: vwm(500px);
+        }
+      }
+      &::before {
+        top: 54%;
+        right: 405px;
+        transform: translateY(-50%);
+        @include breakpoint(lg){
+          right: vw(434px);
+          top: 52%;
+        }
+        @include breakpoint(sm){
+          right: vwm(500px);
+        }
+      }
+      &.is-open::before,
+      &.is-open::after {
+        background:url("../images/kv/kv_close2.svg") no-repeat center;
+        background-size: contain;
+      }
+    }
+    &__content {
+      display: none;
+      padding: 32px;
+      line-height: 1.5;
+      text-align: justify;
+      background-color: #ffffff;
+      position: relative;
+      z-index: 3;
+      @include breakpoint(lg) {
+        padding: vw(32px);
+      }
+      @include breakpoint(sm){
+        font-size: vwm(29px);
+        padding: vwm(32px);
+      }
+    }
+    &__box {
+      overflow-x: auto;
+      width: 100%;
+      text-align: left;
+      &::-webkit-scrollbar {
+        height: 6px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+      }
+    }
+    .intro-table {
+      margin: 6px 0;
+      text-wrap: nowrap;
+      th,td {
+        padding: 4px 16px;
+        font-size: 16px;
+        @include breakpoint(sm){
+          margin: vwm(12px) 0;
+          font-size: vwm(29px);
+          padding: vwm(8px) vwm(24px);
+        }
+      }
+      // small {
+      //   display: block;
+      //   outline: 1px solid red;
+      // }
+      // .txt-small {
+      //   margin-top: 10px;
+      // }
+    }
+  }
+}
+
+
+
+//-side-btn
+.nav {
+  position: fixed;
+  // top: 70%;
+  bottom: 300px;
+  right: 1%;
+  z-index: 99;
+  @include b768 {
+    bottom: 8px;
+    width: 98%;
+    margin: 0 auto;
+  }
+  &__item {
+    margin-top: 12px;
+    width: 165px;
+    font-size: 18px;
+    &:last-child {
+      display: none;
+    }
+    @include b768 {
+      display: none;
+      &:last-child {
+        display: block;
+        position: static;
+        width: 100%;
+      }
+    }
+  }
+  &__link {
+    display: flex;
+    align-items: center;
+    position: relative;
+    border: 3px solid #c38754;
+    padding: 16px;
+    border-radius: 60px;
+    color: #42210b;
+    font-weight: 600;
+    @include b768 {
+      border: unset;
+      padding: vwm(20px) 0;
+      font-size: vwm(30px);
+      display: flex;
+      justify-content: center;
+      border: 2px solid #42210b;
+      border-radius: vwm(60px);
+      letter-spacing: 0.1em;
+    }
+    //-白底
+    &::before{
+      content: '';
+      position: absolute;
+      top: 3px;
+      right: -6px;
+      left: 3px;
+      bottom: -6px;
+      background-color: #ffffff;
+      border-radius: 60px;
+      z-index: -1;
+      @include b768 {
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+      }
+    }
+    &:focus:before,
+    &:hover:before{
+      background-color: #ffe577;
+    }
+    //-星星
+    &::after {
+      content: "";
+      position: absolute;
+      background:url("../images/kv/kv_star2.svg") no-repeat center;
+      background-size: contain;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-40%);
+      width: 20px;
+      height: 20px;
+      @include b768 {
+        display: none;
+      }
+    }
+  }
+}
+.is-static {
+  position: static !important;
+  @include b768 {
+    .nav__link {
+      background-color: #fff;
+      margin-top: vwm(40px);
+    }
+  }
+}

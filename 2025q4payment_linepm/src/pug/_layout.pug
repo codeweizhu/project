@@ -1,0 +1,151 @@
+include faq/_faq-item
+include _data
+
+doctype html
+html(lang="zh-Hant")
+  block vars
+    - var hasCarousel = true
+    - var hasLightbox = true
+    - var author = '永豐大戶DAWHO'
+    - var web_title = '最佳DA配 限量抽AirPods Pro 3'
+    - var og_title = '最佳DA配 限量抽AirPods Pro 3'
+    - var og_image = 'https://dawho.tw/hot/2025q4payment_linepm/images/og-image.png?v=20251202'
+    - var og_url = 'https://dawho.tw/hot/2025q4payment_linepm/'
+    - var og_desc = '首次連結享30儲值金'
+    - var schema_classify = '最佳DA配 限量抽AirPods Pro 3'
+    - var root = '../../'
+    - var date_publish = '2026-01-21'
+
+
+  head
+    block head
+      meta(charset='UTF-8')
+      meta(http-equiv='X-UA-Compatible' content='IE=edge,Chrome=1')
+      meta(http-equiv='Cache-Control' content='no-cache, no-store, must-revalidate')
+      meta(http-equiv='Pragma' content='no-cache')
+      meta(http-equiv='Expires' content='0')
+      //- Mobile Only
+      meta(name='HandheldFriendly' content='true')
+      meta(name='MobileOptimized' content='320')
+      meta(name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0 , viewport-fit=cover')
+      meta(name='format-detection' content='telephone=no')
+      //- meta info
+      title #{og_title ? og_title + ' | ' + author : ''}
+      meta(name='description', content=og_desc)
+      meta(property='og:title', content=(og_title ? og_title + ' | ' + author : ''))
+      meta(property='og:image', content=og_image)
+      meta(property='og:url', content=og_url)
+      meta(property='og:description', content=og_desc)
+      meta(property='og:type' content='website')
+      meta(property='og:locale' content='zh_TW')
+      meta(property='og:site_name' content='大戶DAWHO - 銀行、證券一次開足，輕鬆投資 大大滿足')
+      meta(name='author', content=author)
+      meta(name='copyright', content=author)
+      link(rel='canonical' href=og_url)
+      link(rel='shortcut icon' href=(root + 'images/favicon.ico') type='image/x-icon')
+      link(rel="preload" as="image" href="images/kv/BG.svg" fetchpriority="high")
+      script(src=(root + 'vendor/js/jquery-latest.min.securejs'))
+      //- css
+      if hasCarousel
+        link(href="css/lib/splide.min.css" rel='stylesheet' type='text/css')
+        link(href='css/lib/swiper-bundle.min.css' rel='stylesheet' type='text/css')
+
+      link(href='css/styles.css' rel='stylesheet' type='text/css')
+      link(rel="preconnect" href="https://fonts.googleapis.com")
+      link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+      link(href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet")
+
+
+      //- 數位足跡
+      script(src=(root + 'js/sensorstrackerV102.js'))
+      script(src=(root + 'js/appier.securejs'))
+
+      //- 結構化資料
+      script(type='application/ld+json').
+        [
+          {
+            "@context": "http://schema.org",
+            "@type": "WebSite",
+            "url": "#{og_url}",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "#{og_url}"
+            },
+            "name": "#{schema_classify ? schema_classify + ' | ' + author : ''}",
+            "headline": "#{schema_classify ? schema_classify + ' | ' + author : ''}",
+            "image": ["#{og_image}"],
+            "datePublished": "#{date_publish}",
+            "dateModified": "#{date_modify ? date_modify : date_publish}",
+            "author": {
+              "@type": "Organization",
+              "name": "大戶DAWHO數位帳戶"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "大戶DAWHO數位帳戶",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://dawho.tw/img/logo.svg"
+              }
+            },
+            "description": "#{og_desc}"
+          },
+          {
+            "@context": "http://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "完成帳戶連結就能拿到回饋嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "活動任務的儲值金回饋名額有限(限量3,334名)，若提前額滿將公告於LINE Pay官方帳號貼文專區，若於活動額滿前完成綁定，就符合活動回饋資格喔！"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "如果我有DAWHO數位帳戶，但是使用永豐銀行帳戶完成「首綁送30元儲值金」活動，是否符合「DAWHO登錄抽AirPods Pro 3」抽獎資格？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "「首綁送30元儲值金」限使用「DAWHO數位帳戶」完成，並且於2025年12月31日前完成上方的活動登錄，才算符合「DAWHO登錄抽AirPods Pro 3」的抽獎資格喔！盡情享受無現金消費的樂趣之前，記得先檢查連結的是否為DAWHO數位帳戶，才能好好消費，好好抽好禮！"
+                }
+              }
+            ]
+          }
+        ]
+
+
+
+  body
+    #overlayer
+    .loader
+      .dawho-logo
+        img(src="images/dawho-logo.svg" alt="DAWHO 大戶")
+      .loading
+        img(src="images/d-loading.svg" alt)
+
+    .wrapper-container
+      .wrapper
+        .wrapper-mask
+        block header
+          include layout/_header.pug
+
+        block left
+        block content
+
+        block footer
+          include layout/_footer.pug
+
+    case hasLightbox
+      //- hasLightbox = true 時才會SHOW燈箱
+      when true
+        block lightbox
+
+    block script
+      script(src="js/gsap.min.securejs" type="text/javascript")
+      if hasCarousel
+        script(src="js/splide.min.securejs" type="text/javascript")
+        script(src="js/splide-autoscroll.min.securejs" type="text/javascript")
+        script(src="js/swiper-bundle.min.securejs" type="text/javascript")
+
+      script(src='js/scripts.securejs' type='text/javascript')

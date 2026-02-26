@@ -1,0 +1,166 @@
+
+
+//-正式
+var urlPost = "https://dawho.tw/utility/EntryPostHx.ashx";
+var urlCaptcha = "https://dawho.tw/utility/CaptchaImage.ashx";
+
+
+
+// 驗證碼
+function upDataCaptcha() {
+  try {
+    $("#captcha").attr("src", urlCaptcha + "?t=" + new Date().getTime());
+  } catch (error) {
+    console.error("更新驗證碼失敗:", error);
+  }
+}
+
+// 驗證碼reload
+let lock = false;
+$("#captchaReload").click(function () {
+  if (!lock) {
+    lock = true;
+    $(this)
+      .addClass("on")
+      .delay(1000)
+      .queue(function (next) {
+        $(this).removeClass("on");
+        next();
+      });
+    upDataCaptcha();
+    lock = false;
+  }
+});
+
+// 第一次呼叫 驗證碼
+upDataCaptcha();
+
+// 檢核身份證字號
+function verifyId(id) {
+  id = id.trim();
+
+  verification = id.match("^[A-Z][12]\\d{8}$");
+  if (!verification) {
+    return false;
+  }
+
+  let conver = "ABCDEFGHJKLMNPQRSTUVXYWZIO";
+  let weights = [1, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1];
+
+  id = String(conver.indexOf(id[0]) + 10) + id.slice(1);
+
+  checkSum = 0;
+  for (let i = 0; i < id.length; i++) {
+    c = parseInt(id[i]);
+    w = weights[i];
+    checkSum += c * w;
+  }
+  return checkSum % 10 == 0;
+}
+
+//- 手機號碼(移除非數字字元)
+// document.getElementById("phoneNum").addEventListener("input", function (e) {
+//   this.value = this.value.replace(/\D/g, ""); // 移除非數字字元
+// });
+// function isValidPhone(num) {
+//   const regex = /^(?!0{10}$)(?!09(\d)\1{7}$)09\d{8}$/;
+//   return regex.test(num);
+// }
+document.getElementById("phoneNum").addEventListener("input", function () {
+  // 移除非數字字元
+  this.value = this.value.replace(/\D/g, "");
+  // 驗證格式與防呆
+  const isValid = isValidPhone(this.value);
+  //顯示錯誤提示
+  document.getElementById("phoneErr").style.display = isValid || this.value.length < 10 ? "none" : "inline";
+});
+// - 驗證函式（台灣手機號碼 + 防呆）
+function isValidPhone(num) {
+  const regex = /^09\d{8}$/;
+  return regex.test(num);
+}
+
+
+
+
+
+
+
+$("#dataSubmit").on("click", function () {
+  // return false;
+  var err = "";
+
+  var $cardID = $("#cardID"); // 身分證字號
+  var $phoneNum = $("#phoneNum"); // 手機號碼
+
+  var c_no = $cardID.val(); // 身分證字號
+  var p_no = $phoneNum.val(); // 手機號碼
+  var capt = $("#captNum").val(); // 驗證碼
+  var a_t = $("#termsAT").is(":checked") ? "Y" : "N"; // 勾選
+
+  $cardID.removeClass("errorMessage");
+  $phoneNum.removeClass("errorMessage");
+  $(".input__errorMessage").addClass("hidden"); // 先全部隱藏
+  var $thisbtn = $(this);
+  c_no = c_no.toUpperCase();
+
+  if (c_no == "" || !verifyId(c_no)) {
+    err += "請輸入正確身份證。\n";
+    $cardID.addClass("errorMessage");
+    $cardID.closest(".form__group").find(".input__errorMessage").removeClass("hidden");
+  }
+
+  if(p_no == ""){
+    err += "請輸入正確手機號碼。\n";
+    $phoneNum.addClass("errorMessage");
+    $phoneNum.closest(".form__group").find(".input__errorMessage").removeClass("hidden");
+  }else if(!/^\d{10}$/.test(p_no) || !isValidPhone(p_no)) {
+    err += "行動電話號碼格式錯誤，請輸入 10 碼數字。\n";
+    $phoneNum.addClass("errorMessage");
+    $phoneNum.closest(".form__group").find(".input__errorMessage").removeClass("hidden");
+  }
+
+  if (capt == "") {
+    err += "請輸入正確驗證碼。\n";
+  }else if (!/^[A-Za-z0-9]{4}$/.test(capt)) {
+    err += "驗證碼格式錯誤，請重新輸入。\n";
+  }
+
+
+  if (a_t == 'N') {
+    err += "請詳閱專案辦法並勾選同意選項。\n";
+  }
+
+  if (err != "") {
+    alert(err);
+    return false;
+  }
+
+  $.ajax({
+    url: urlPost,
+    type: "post",
+    dataType: "jsonp",
+    jsonpCallback: "sinoFunc",
+    data: {
+      proj: "2025-dawho-act14",
+      capt: capt,
+      a_t: a_t,
+      c_no: c_no,
+      p_no: p_no,
+    },
+    success: function (data) {
+      if (data.Code == "00") {
+        alert("登錄成功");
+      } else if (data.Code == "12") {
+        alert("請輸入正確驗證碼");
+      } else if (data.Code == "22") {
+        alert("您已報名過");
+      } else {
+        alert("非預期錯誤，請聯絡客服人員");
+      }
+
+      //每次送出後，圖形驗證碼會重設，需reload頁面上的圖檔
+      upDataCaptcha();
+    },
+  });
+});

@@ -1,0 +1,186 @@
+// scrollAnim //
+function scrollAnim() {
+	var pageTop = $(document).scrollTop();
+	var pageBottom = pageTop + $(window).height();
+	var tags = $(".js-animate");
+	var activeOffset = 30;
+
+	tags.each(function (index) {
+		if ($(this).offset().top < pageBottom - activeOffset) {
+			$(this).addClass("js-animate--active");
+		} else {
+			$(this).removeClass("js-animate--active");
+		}
+	});
+}
+scrollAnim(); // init
+$(document).on("scroll", scrollAnim);
+
+//-loading
+$(window).on("load", function () {
+  $.Window = $(window);
+  $.Body = $('body');
+  $('body').css('visibility', 'visible');
+  $(".loader").delay(500).fadeOut("slow");
+  $("#overlayer").delay(500).fadeOut("slow");
+})
+
+//-輪播
+new Splide('#mysplide', {
+  type: 'loop',
+  perPage: 2,
+  drag: false,
+  breakpoints: {
+    768: {
+      perPage: 1,
+      drag: true,
+    },
+  },
+}).mount();
+
+//-toggle
+$("#cash").on("click", function () {
+  $(this).toggleClass("active");
+  $("#cashdesc").slideToggle();
+});
+$("#certificate").on("click", function () {
+  $(this).toggleClass("active");
+  $("#certificatedesc").slideToggle();
+});
+$("#product").on("click", function () {
+  $(this).toggleClass("active");
+  $("#productdesc").slideToggle();
+});
+
+//-kv
+// document.addEventListener("DOMContentLoaded", () => {
+//   let tl = gsap.timeline({ repeat: -1, repeatDelay: 5 });
+//   tl.from("#title3", {
+//     scale: 0.5,
+//     opacity: 0,
+//     duration: 1,
+//     ease: "bounce.out"
+//   })
+//   .from("#title1", {
+//     scale: 0.3,
+//     opacity: 0,
+//     duration: 1,
+//     ease: "bounce.out"
+//   })
+//   .from("#title2", {
+//     scale: 0.3,
+//     opacity: 0,
+//     duration: 1,
+//     ease: "bounce.out"
+//   })
+// });
+document.addEventListener("DOMContentLoaded", () => {
+  let tl = gsap.timeline({ repeat: -1, repeatDelay: 5 });
+  tl.from("#title3", {
+    scale: 0.3,
+    opacity: 0,
+    duration: 1,
+    ease: "bounce.out"
+  }, "start")
+  .from("#title1", {
+    scale: 0.3,
+    opacity: 0,
+    duration: 1,
+    ease: "bounce.out"
+  }, "start+=0.25")
+  .from("#title2", {
+    scale: 0.3,
+    opacity: 0,
+    duration: 1,
+    ease: "bounce.out"
+  }, "start+=0.5");
+});
+
+//-文字標題
+// document.addEventListener("DOMContentLoaded", () => {
+//   let titles = ["#title4", "#title5", "#title6"];
+//   titles.forEach(title => {
+//     gsap.from(title, {
+//       scale: 0.3,
+//       opacity: 0,
+//       duration: 1,
+//       ease: "bounce.out",
+//       scrollTrigger: {
+//         trigger: title,
+//         start: "top 80%",
+//         toggleActions: "play none none reset"
+//       }
+//     });
+//   });
+// });
+
+//-star
+document.addEventListener("DOMContentLoaded", () => {
+  const stars = document.querySelectorAll(".star");
+  stars.forEach(star => {
+    function twinkle() {
+      gsap.to(star, {
+        opacity: 0,
+        duration: Math.random() * 1 + 0.5,
+        ease: "power1.inOut",
+        onComplete: () => {
+          gsap.set(star, { rotation: Math.random() * 360 });
+          gsap.to(star, {
+            opacity: Math.random() * 0.3 + 0.7, // 透明度回升
+            scale: Math.random() * 0.4 + 0.8, // 大小變化
+            duration: Math.random() * 2 + 2, // 閃爍時間
+            ease: "power1.inOut",
+            onComplete: twinkle,
+          });
+        }
+      });
+    }
+    twinkle();
+  });
+});
+
+
+//-錨點
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href').substring(1);
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      const headerOffset = 130;
+      const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - headerOffset,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+// header anchor link toggle menu
+$("#header a.header-sec-link").on("click", function () {
+  $("#header-toggle").removeClass("toggled");
+  $("#header nav").removeClass("toggled");
+});
+
+// header menu setting
+$("#header-toggle").on("click", function () {
+  $(this).toggleClass("toggled");
+  $("nav").toggleClass("toggled");
+});
+
+//-pop
+$(".dawho-app-link").on("click", function (e) {
+  // console.log(123);
+  $("#qrcode-popup").fadeIn();
+});
+$(".close").on("click", function () {
+  $("#qrcode-popup").fadeOut();
+});
+
+
+
+// 關閉popup
+$('.popup-btns').on('click', () => {
+  $('#popup-end').fadeOut();
+});

@@ -1,0 +1,30 @@
+//- 表單
+.task-content__form
+  .form__group
+    label.form__label(for="cardID") 身分證統一編號 *
+    input#cardID.form__input(type="text", placeholder="請輸入身分證字號" maxlength="10")
+    .form__errorMessage.hidden 請輸入含字首大寫英文字母10位字元
+
+  .form__group
+    label.form__label(for="phoneNum") 手機號碼 *
+    input#phoneNum.form__input(type="text", placeholder="請輸入手機號碼" maxlength="10")
+    .form__errorMessage.hidden 請輸入正確手機號碼
+
+  .form__group
+    label.form__label(for="captNum") 驗證碼 *
+    .form__captcha
+      input#captNum.form__input.captcha(type="text", placeholder="請輸入驗證碼" maxlength="4")
+
+      .form__box
+        img#captcha.form__captcha--img(src="images/task/captcha.png", alt="驗證碼圖片")
+        button#captchaReload.form__captcha--reload(type="button")
+          img(src="images/task/reload.svg", alt="重新載入")
+
+  //- 詳閱條款勾選
+  .form__check
+    input#termsAT(type="checkbox" name="termsAT")
+    label(for="termsAT")
+      .form__check--text
+        | 本人已詳閱
+        a.form__check--text-link(href="https://bank.sinopac.com/sinopacBT/webevents/personal_download/個人資料蒐集處理及利用.pdf?_sasdk=dMTk3YmY4ODJjMmQxZGQtMDVhZTg3OGNkMTRiODA0LTRjNjU3YjU4LTkyMTYwMC0xOTdiZjg4MmMyZTVmZg" target="_blank") 「永豐銀行個人資料蒐集、處理及利用告知義務內容」
+        | ，並填寫資料作為本活動登錄使用，本人同意提供相關個人資料，以作為本活動使用並候備查，請按「立即登錄」。

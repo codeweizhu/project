@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+// component
+@import "component/_reset.scss";
+@import "component/_base.scss"; // 基礎 CSS 檔案
+@import "component/_keyframes.scss"; // CSS3 Animations
+@import "component/_js-animate.scss"; // scroll Animations
+@import "component/_loading.scss"; // loading 畫面
+@import "component/_header.scss";
+@import "component/_footer.scss";
+@import "component/_lightbox.scss";
+// @import "component/_typography.scss";
+
+
+// section
+@import "section/_section-kv.scss";  // KV區
+@import "section/_section-task.scss";  // 任務輸入區
+@import "section/_section-info.scss";  // 資訊區
+@import "section/_section-faq.scss";  // 常見問題區
+@import "section/_section-notice.scss";  // 注意事項區
+
+
+@import "_master.scss"; // 主要 CSS 撰寫
